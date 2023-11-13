@@ -1,111 +1,320 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@900&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <title>Магазин</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body {
-      background-color: white;
-      font-family: 'Montserrat Alternates', sans-serif;
-      margin: 0;
-      padding: 0;
-      zoom: 90%;
+
+  body {
+  background-color: #ffffff;
+  font-family: 'Montserrat Alternates', sans-serif;
+  font-weight: 900; 
+  text-transform: uppercase; 
+  margin: 0;
+  padding: 0;
+}
+    .header-image-container {
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+      overflow: hidden; 
+
     }
-    
-    h1 {
-      text-align: center;
-      margin-top: 0;
-    }
-    h2 {
-      font-weight: bold;
-    }
+    #frame57, #frame58 {
+     
+  border-radius: 20px;
+}
+   .mySlides {
+  display:none;
+  margin-top: 10px;
+  border-radius: 20px;
+  transition: 1s opacity; /* Add this line */
+ 
+}
+h1 {
+  text-align: center;
+  margin-top: 0;
+  text-transform: uppercase; 
+}
+h2 {
+  font-weight: 900; 
+  text-transform: uppercase; 
+}
     
     header {
       padding: 0px 0px 0; 
       border-radius: 10px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-    }
-    
-    .categories {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 10px;
+      align-items: flex-start; /* Changed from center to flex-start */
+      background-color: white; 
       margin-top: 20px;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding: 20px;
-      background-color: white;
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Increased shadow blur and opacity */
-      border-radius: 10px;
     }
-    
-    .category {
-      margin-top: -30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
+    .header-image-container {
+  display: flex;
+  justify-content: center;
+  width: calc(100% - 60px);
+  overflow: hidden; /* this line is to hide the part of the image that goes beyond the container */
+  padding: 0 30px;
+}
+
+#header-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.categories {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+@media screen and (min-width: 370px) {
+  .categories {
+    max-width: 360px;
+    overflow-x: visible; /* disable horizontal scroll when screen is wider than 560px */
+    scrollbar-width: none; /* hide scrollbar */
+  }
+}
+.categories {
+  display: flex;
+  flex-wrap: nowrap; 
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch; 
+  gap: 10px;
+  padding: 0px;
+  margin-top: -30px;
+  background-color: #ffffff;
+  padding-left: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  align-items: flex-start; 
+  scrollbar-width: none;
+}
+
+.categories::-webkit-scrollbar {
+  display: none;
+}
+.category {
+  min-width: max-content;
+  white-space: nowrap; 
+  margin-top: 0px;
+  display: flex;
+  align-items: center;
+}
+
     .category h2 {
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Montserrat Alternates', sans-serif;
       font-weight: 900;
-      color: black;
+      color: rgb(34, 34, 34);
       cursor: pointer;
+      font-size: 16px; /* <--- Add this line to decrease the font size */
     }
-    
-    .combo-set h2 { /* Added specific class for 'Комбо Сеты' */
-      color: #FE3A4A;
-    }
-    
-    img {
-      display: block;
-      margin: 0 auto;
-    }
-    /* rest of the code... */
+
+.product img {
+  max-width: 100%;
+  height: auto;
+}
+
+.product h2 {
+  margin: 10px 0;
+}
+
+.product p {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
+.product {
+  margin-top: 20px;
+  margin-left: 4px;
+  padding: 10px;
+  width: calc(44% - 5px);   /* Change the product width to take half width and subtract margins */
+  box-shadow: 4px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-block; /* Change from block to inline-block */
+}
+
+#productSection {
+  display: block; 
+  margin: 0 auto; /* For center align */
+  width: 100%; /* Change here */
+}
+.info-section {
+  display: flex;
+  justify-content: flex-start;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  align-items: center; 
+  width: 380px;
+  padding-left: 10px;
+  margin-top: 5px;
+  background-color: #ffffff;
+  
+}
+
+.info-block {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  font-size: 11px;
+}
+
+.info-block img {
+  margin-right: 10px;
+}
+.mySlides {display:none;}
+
   </style>
   
+  <script>
+
+var products = {}; // Will be used to store product information
+    
+function loadProducts() {
+  products = {
+    'combo-set': [
+      {'img': 'img/product.jpg', 'name': 'Комбо продукт 1', 'price': '1500 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Комбо продукт 2', 'price': '1700 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Комбо продукт 3', 'price': '1600 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Комбо продукт 4', 'price': '1600 ₽'}
+    ],
+    'roll-set': [
+      {'img': 'img/product.jpg', 'name': 'Набор Роллов 1', 'price': '1300 ₽'}, 
+      {'img': 'img/product.jpg', 'name': 'Набор Роллов 2', 'price': '1500 ₽'}, 
+      {'img': 'img/product.jpg', 'name': 'Набор Роллов 3', 'price': '1400 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Набор Роллов 4', 'price': '1400 ₽'}
+    ],
+    'number-rolls': [
+      {'img': 'img/product.jpg', 'name': 'Цифра Ролл 1', 'price': '1800 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Цифра Ролл 2', 'price': '1900 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Цифра Ролл 3', 'price': '2000 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Цифра Ролл 4', 'price': '2000 ₽'}
+    ],
+    'fish-rolls': [
+      {'img': 'img/product.jpg', 'name': 'Фиш Ролл 1', 'price': '1600 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Фиш Ролл 2', 'price': '1800 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Фиш Ролл 3', 'price': '1700 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Фиш Ролл 4', 'price': '1700 ₽'}
+    ],
+    'nova-set': [
+      {'img': 'img/product.jpg', 'name': 'Нова Сет 1', 'price': '1200 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Нова Сет 2', 'price': '1400 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Нова Сет 3', 'price': '1300 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Нова Сет 4', 'price': '1300 ₽'}
+    ],
+    'sushi-set': [
+      {'img': 'img/product.jpg', 'name': 'Комплект Суши 1', 'price': '1500 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Комплект Суши 2', 'price': '1700 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Комплект Суши 3', 'price': '1600 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Комплект Суши 4', 'price': '1600 ₽'}
+    ],
+    'classic-sushi': [
+      {'img': 'img/product.jpg', 'name': 'Суши Классика 1', 'price': '1400 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Суши Классика 2', 'price': '1600 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Суши Классика 3', 'price': '1800 ₽'},
+      {'img': 'img/product.jpg', 'name': 'Суши Классика 4', 'price': '1400 ₽'}
+    ]
+  };
+}
+    
+function displayProduct(productType) {
+  const section = document.getElementById('productSection');
+  var innerHTML = '';
+
+
+  
+  for(let i = 0; i < products[productType].length; i++) {
+    innerHTML += `<div class="product">
+                    <img src=${products[productType][i].img} alt=${products[productType][i].name}>
+                    <h2>${products[productType][i].name}</h2>
+                    <p>${products[productType][i].price}</p>
+                  </div>`;
+  }
+    
+  section.innerHTML = innerHTML;
+}
+    window.onload = loadProducts;
+
+</script>
 </head>
 <body>
-  <img id="header-image" src="img/Frame 56.jpg" alt="Header Image"> 
-  <header>   
+  
+  <div class="header-image-container">
+    <img id="header-image" src="img/Frame 56.jpg" alt="Header Image">
+  </div>
+  
+  <header>
     <div class="categories">
-     <div class="category combo-set">
+     <div class="category combo-set" onclick="displayProduct('combo-set')">
         <h2>Комбо Сеты</h2>
       </div>
       
-      <div class="category">
+      <div class="category" onclick="displayProduct('roll-set')">
         <h2>Наборы Роллов</h2>
       </div>
       
-      <div class="category">
+      <div class="category" onclick="displayProduct('number-rolls')">
         <h2>Цифра Роллы</h2>
       </div>
       
-      <div class="category">
+      <div class="category" onclick="displayProduct('fish-rolls')">
         <h2>Фиш Роллы</h2>
       </div>
       
-      <div class="category">
+      <div class="category" onclick="displayProduct('nova-set')">
         <h2>Нова Сеты</h2>
       </div>
       
-      <div class="category">
+      <div class="category" onclick="displayProduct('sushi-set')">
         <h2>Комплекты Суши</h2>
       </div>
       
-      <div class="category">
+      <div class="category" onclick="displayProduct('classic-sushi')">
         <h2>Суши Классика</h2>
       </div>
     </div>
+    <div class="info-section">
+      <div class="info-block">
+        <img src="img/сlock.svg" alt="Work Time">
+        <p>10:00 - 22:00 (ПТ-СБ 23:00)</p>
+      </div>
+      <div class="info-block">
+        <img src="img/clock1.svg" alt="Telephone">
+        <p>8 (351) 242 00 64</p>
+      </div>
+    </div>
+      <div class="header-image-container">
+    <img class="mySlides" src="img/Frame 57.jpg" style="width:100%">
+    <img class="mySlides" src="img/Frame 58.jpg" style="width:100%">
+  </div>
+     <script>
+    // Your JS for products, etc
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+      }
+      myIndex++;
+      if (myIndex > x.length) {myIndex = 1}    
+      x[myIndex-1].style.display = "block";  
+      setTimeout(carousel, 4000); // Change image every 2 seconds
+    }    
+  </script>
   </header>
   
-  <section>
-    <!-- iframe content goes here -->
+  <section id='productSection'>
+    <!-- Iframe content / Product display goes here -->
   </section>
 </body>
 </html>
