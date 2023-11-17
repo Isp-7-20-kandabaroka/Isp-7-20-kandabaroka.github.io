@@ -411,6 +411,7 @@
     }
   };
 </script>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
   let tg = window.Telegram.WebApp;
   let buy = document.getElementById("checkoutBtn")
@@ -420,12 +421,13 @@
     let selectPaymentBtn = document.getElementById("selectPaymentBtn").value;
     let orderComment = document.getElementById("orderComment").value;
     let promoCode = document.getElementById("promoCode").value;
+    tg.expand();
     let data = {
       товары: name,
-      адресс_доставки: deliveryAddress,
-      Способ_оплаты: selectPaymentBtn,
-      Комментарий_к_заказу: orderComment,
-      Промокод: promoCode
+      deliveryAddress: deliveryAddress,
+      selectPaymentBtn: selectPaymentBtn,
+      orderComment: orderComment,
+      promoCode: promoCode
     }
     tg.sendData(JSON.stringify(data));
     tg.close();
