@@ -13,166 +13,12 @@
   <meta charset="UTF-8">
   <title>Магазин</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
-
-    var products = {}; // Will be used to store product information
-
-
-
-    var cart = []; // Пустая корзина в начале
-    function loadProducts() {
-      products = {
-        'combo-set': [{ 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽', 'grams': '100 г' },
-        { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽', 'grams': '110 г' },
-        { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽', 'grams': '100 г' },
-        { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽', 'grams': '120 г' }],
-        'roll-set': [
-          { 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽' },
-          { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽' },
-          { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽' },
-          { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽' }
-        ],
-        'number-rolls': [
-          { 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽' },
-          { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽' },
-          { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽' },
-          { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽' }
-        ],
-        'fish-rolls': [
-          { 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽' },
-          { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽' },
-          { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽' },
-          { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽' }
-        ],
-        'nova-set': [
-          { 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽' },
-          { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽' },
-          { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽' },
-          { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽' }
-        ],
-        'sushi-set': [
-          { 'img': 'img/k7.jpg', 'name': 'Палочки', 'price': '3 ₽', 'grams': '0 г' },
-          { 'img': 'img/k4.jpg', 'name': 'Васаби', 'price': '15 ₽', 'grams': '20 г' },
-          { 'img': 'img/k6.jpg', 'name': 'Имбирь', 'price': '15 ₽', 'grams': '100 г' },
-          { 'img': 'img/k3.jpg', 'name': 'Комплект для суши', 'price': '30 ₽', 'grams': '100 г' },
-          { 'img': 'img/k5.jpg', 'name': 'Соевый соус', 'price': '15 ₽', 'grams': '100 мл' },
-          { 'img': 'img/k1.jpg', 'name': 'Соус тар-тар', 'price': '25 ₽', 'grams': '50 мл' },
-          { 'img': 'img/k2.jpg', 'name': 'Соус спайси', 'price': '25 ₽', 'grams': '50 мл' }
-        ],
-        'classic-sushi': [
-          { 'img': 'img/s1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽', 'grams': '100 г' },
-          { 'img': 'img/s2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽', 'grams': '100 г' },
-          { 'img': 'img/s3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽', 'grams': '100 г' },
-          { 'img': 'img/s4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽', 'grams': '100 г' }
-        ]
-      }
-
-    };
-    function addToCart(category, productIndex) {
-      var product = products[category][productIndex];
-
-      // добавляем свойство category в каждый продукт
-      product.category = category;
-
-      var existingProduct = cart.find((item) => item.name === product.name && item.category === product.category);
-
-      if (existingProduct) {
-        existingProduct.quantity++;
-      } else {
-        product.quantity = 1;
-        cart.push(product);
-      }
-
-      displayCart();
-    }
-
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      displayCart();
-    }
-    function increaseQuantityInCart(index) {
-      cart[index].quantity++;
-      displayCart();
-    }
-    function decreaseQuantityInCart(index) {
-      if (cart[index].quantity > 1) {
-        cart[index].quantity--;
-      } else {
-        removeFromCart(index);
-      }
-
-      displayCart();
-    }
-    function displayCart() {
-      const cartSection = document.getElementById('cartModalContent');
-      let totalPrice = 0;
-      let innerHTML = `<h2 class="ots"></h2><div class="cart">`;
-
-      for (let i = 0; i < cart.length; i++) {
-        totalPrice += parseInt(cart[i].price.replace(" ₽", "")) * cart[i].quantity;
-        innerHTML += `
- <div class="product-details">
-    <img src=${cart[i].img} alt=${cart[i].name}>
-    <div>
-      <div class="ed">
-      <h2 class="tovartext">${cart[i].name}</h2>
-      <p class="tovartext1">${cart[i].price}</p>
-      </div>
-      <div class="botb">
-      <button onclick="decreaseQuantityInCart(${i})">-</button>${cart[i].quantity} 
-      <button onclick="increaseQuantityInCart(${i})">+</button></div>
-
-    </div>              
-</div>`;
-
-
-
-      }
-
-      cartSection.innerHTML = innerHTML;
-
-      document.getElementById('totalPriceSection').innerHTML = `<h2>ОФОРМИТЬ ЗАКАЗ: ${totalPrice} ₽</h2>`;
-    }
-    function displayProduct(productType) {
-      const section = document.getElementById('productSection');
-      var innerHTML = '';
-      const categoryElements = document.querySelectorAll(".category");
-      categoryElements.forEach((el) => {
-        // Удалем класс .category-selected у всех элементов
-        el.classList.remove("category-selected");
-        // Добавляем класс .category-selected выбранному элементу
-        if (el.classList.contains(productType)) {
-          el.classList.add("category-selected");
-        }
-      });
-      for (let i = 0; i < products[productType].length; i++) {
-        innerHTML += `<div class="product">
-      <img src=${products[productType][i].img} alt=${products[productType][i].name}>
-      <h2>${products[productType][i].name}</h2>
-      <p>${products[productType][i].price} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ${products[productType][i].grams}</p>
-      <div class="product-quantity">
-        <button class="boldMontserrat" onclick="addToCart('${productType}', ${i})">ДОБАВИТЬ</button>
-      </div>
-    </div>`;
-
-      }
-
-
-      section.innerHTML = innerHTML;
-    }
-    window.onload = loadProducts;
-
-  </script>
-
 </head>
 
 <body>
-
-
   <div class="header-image-container">
     <img id="header-image" src="img/Frame 56.jpg" alt="Header Image">
   </div>
-
   <header>
     <div class="categories">
       <div class="category combo-set" onclick="displayProduct('combo-set')">
@@ -321,14 +167,164 @@
       </div>
       <div class="ooo">
         <button id="addToOrderBtn" onclick="openProductModal('sushi-set')">Добавить к заказу</button>
-        <button id="checkoutBtn" disabled>Оформить заказ</button>
-         
+        <button id="checkoutBtn">Оформить заказ</button>
+
       </div>
       <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
     </div>
   </div>
 
 </body>
+<script>
+
+  var products = {}; // Will be used to store product information
+
+
+
+  var cart = []; // Пустая корзина в начале
+  function loadProducts() {
+    products = {
+      'combo-set': [{ 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽', 'grams': '100 г' },
+      { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽', 'grams': '110 г' },
+      { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽', 'grams': '100 г' },
+      { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽', 'grams': '120 г' }],
+      'roll-set': [
+        { 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽' },
+        { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽' },
+        { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽' },
+        { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽' }
+      ],
+      'number-rolls': [
+        { 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽' },
+        { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽' },
+        { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽' },
+        { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽' }
+      ],
+      'fish-rolls': [
+        { 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽' },
+        { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽' },
+        { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽' },
+        { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽' }
+      ],
+      'nova-set': [
+        { 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽' },
+        { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽' },
+        { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽' },
+        { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽' }
+      ],
+      'sushi-set': [
+        { 'img': 'img/k7.jpg', 'name': 'Палочки', 'price': '3 ₽', 'grams': '0 г' },
+        { 'img': 'img/k4.jpg', 'name': 'Васаби', 'price': '15 ₽', 'grams': '20 г' },
+        { 'img': 'img/k6.jpg', 'name': 'Имбирь', 'price': '15 ₽', 'grams': '100 г' },
+        { 'img': 'img/k3.jpg', 'name': 'Комплект для суши', 'price': '30 ₽', 'grams': '100 г' },
+        { 'img': 'img/k5.jpg', 'name': 'Соевый соус', 'price': '15 ₽', 'grams': '100 мл' },
+        { 'img': 'img/k1.jpg', 'name': 'Соус тар-тар', 'price': '25 ₽', 'grams': '50 мл' },
+        { 'img': 'img/k2.jpg', 'name': 'Соус спайси', 'price': '25 ₽', 'grams': '50 мл' }
+      ],
+      'classic-sushi': [
+        { 'img': 'img/s1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽', 'grams': '100 г' },
+        { 'img': 'img/s2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽', 'grams': '100 г' },
+        { 'img': 'img/s3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽', 'grams': '100 г' },
+        { 'img': 'img/s4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽', 'grams': '100 г' }
+      ]
+    }
+
+  };
+  function addToCart(category, productIndex) {
+    var product = products[category][productIndex];
+
+    // добавляем свойство category в каждый продукт
+    product.category = category;
+
+    var existingProduct = cart.find((item) => item.name === product.name && item.category === product.category);
+
+    if (existingProduct) {
+      existingProduct.quantity++;
+    } else {
+      product.quantity = 1;
+      cart.push(product);
+    }
+
+    displayCart();
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    displayCart();
+  }
+  function increaseQuantityInCart(index) {
+    cart[index].quantity++;
+    displayCart();
+  }
+  function decreaseQuantityInCart(index) {
+    if (cart[index].quantity > 1) {
+      cart[index].quantity--;
+    } else {
+      removeFromCart(index);
+    }
+
+    displayCart();
+  }
+  function displayCart() {
+    const cartSection = document.getElementById('cartModalContent');
+    let totalPrice = 0;
+    let innerHTML = `<h2 class="ots"></h2><div class="cart">`;
+
+    for (let i = 0; i < cart.length; i++) {
+      totalPrice += parseInt(cart[i].price.replace(" ₽", "")) * cart[i].quantity;
+      innerHTML += `
+<div class="product-details">
+  <img src=${cart[i].img} alt=${cart[i].name}>
+  <div>
+    <div class="ed">
+    <h2 class="tovartext">${cart[i].name}</h2>
+    <p class="tovartext1">${cart[i].price}</p>
+    </div>
+    <div class="botb">
+    <button onclick="decreaseQuantityInCart(${i})">-</button>${cart[i].quantity} 
+    <button onclick="increaseQuantityInCart(${i})">+</button></div>
+
+  </div>              
+</div>`;
+
+
+
+    }
+
+    cartSection.innerHTML = innerHTML;
+
+    document.getElementById('totalPriceSection').innerHTML = `<h2>ОФОРМИТЬ ЗАКАЗ: ${totalPrice} ₽</h2>`;
+  }
+  function displayProduct(productType) {
+    const section = document.getElementById('productSection');
+    var innerHTML = '';
+    const categoryElements = document.querySelectorAll(".category");
+    categoryElements.forEach((el) => {
+      // Удалем класс .category-selected у всех элементов
+      el.classList.remove("category-selected");
+      // Добавляем класс .category-selected выбранному элементу
+      if (el.classList.contains(productType)) {
+        el.classList.add("category-selected");
+      }
+    });
+    for (let i = 0; i < products[productType].length; i++) {
+      innerHTML += `<div class="product">
+    <img src=${products[productType][i].img} alt=${products[productType][i].name}>
+    <h2>${products[productType][i].name}</h2>
+    <p>${products[productType][i].price} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ${products[productType][i].grams}</p>
+    <div class="product-quantity">
+      <button class="boldMontserrat" onclick="addToCart('${productType}', ${i})">ДОБАВИТЬ</button>
+    </div>
+  </div>`;
+
+    }
+
+
+    section.innerHTML = innerHTML;
+  }
+  window.onload = loadProducts;
+
+</script>
 <script>
   // Your JS for products, etc
   var myIndex = 0;
@@ -418,22 +414,23 @@
 <script>
   let tg = window.Telegram.WebApp;
   let buy = document.getElementById("checkoutBtn")
-  buy.addEventListener("click",() => {
+  buy.onclick = function(){
     let name = document.getElementById("name").value;
     let deliveryAddress = document.getElementById("deliveryAddress").value;
     let selectPaymentBtn = document.getElementById("selectPaymentBtn").value;
     let orderComment = document.getElementById("orderComment").value;
-    let promoCode= document.getElementById("promoCode").value;
+    let promoCode = document.getElementById("promoCode").value;
     let data = {
       товары: name,
-      адресс_доставки:deliveryAddress,
-      Способ_оплаты:selectPaymentBtn,
-      Комментарий_к_заказу:orderComment,
-      Промокод:promoCode
+      адресс_доставки: deliveryAddress,
+      Способ_оплаты: selectPaymentBtn,
+      Комментарий_к_заказу: orderComment,
+      Промокод: promoCode
     }
     tg.sendData(JSON.stringify(data));
     tg.close();
-  });
+  };
 
 </script>
+
 </html>
