@@ -1,418 +1,207 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="main.css">
   <meta charset="UTF-8">
   <title>Магазин</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-
-  body {
-  background-color: #ffffff;
-  font-family: 'Montserrat Alternates', sans-serif;
-  font-weight: 900; 
-  text-transform: uppercase; 
-  margin: 0;
-  padding: 0;
-  height: 1170px;
-}
-    .header-image-container {
-      display: flex;
-      justify-content: flex-start;
-      width: 100%;
-      overflow: hidden; 
-
-    }
-    #frame57, #frame58 {
-     
-  border-radius: 20px;
-}
-   .mySlides {
-  display:none;
-  margin-top: 10px;
-  border-radius: 20px;
-  transition: 1s opacity; /* Add this line */
- 
-}
-h1 {
-  text-align: center;
-  margin-top: 0;
-  text-transform: uppercase; 
-}
-h2 {
-  font-weight: 900; 
-  text-transform: uppercase; 
-}
-    
-    header {
-      padding: 0px 0px 0; 
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start; /* Changed from center to flex-start */
-      background-color: white; 
-      margin-top: 20px;
-    }
-    .header-image-container {
-  display: flex;
-  justify-content: center;
-  width: calc(100% - 60px);
-  overflow: hidden; /* this line is to hide the part of the image that goes beyond the container */
-  padding: 0 30px;
-}
-
-#header-image {
-  max-width: 100%;
-  height: auto;
-}
-
-.categories {
-  max-width: 100%;
-  overflow-x: auto;
-  scrollbar-width: thin;
-}
-
-@media screen and (min-width: 370px) {
-  .categories {
-    max-width: 360px;
-    overflow-x: visible; /* disable horizontal scroll when screen is wider than 560px */
-    scrollbar-width: none; /* hide scrollbar */
-  }
-}
-.categories {
-  display: flex;
-  flex-wrap: nowrap; 
-  overflow-x: auto; 
-  -webkit-overflow-scrolling: touch; 
-  gap: 10px;
-  padding: 0px;
-  margin-top: -30px;
-  background-color: #ffffff;
-  padding-left: 20px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
-  align-items: flex-start; 
-  scrollbar-width: none;
-}
-
-.categories::-webkit-scrollbar {
-  display: none;
-}
-.category {
-  min-width: max-content;
-  white-space: nowrap; 
-  margin-top: 0px;
-  display: flex;
-  align-items: center;
-}
-
-    .category h2 {
-      font-family: 'Montserrat Alternates', sans-serif;
-      font-weight: 900;
-      color: rgb(34, 34, 34);
-      cursor: pointer;
-      font-size: 16px; /* <--- Add this line to decrease the font size */
-    }
-.cart {
-  display: flex;
-  flex-wrap: wrap;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-gap: 10px;
-  padding: 20px;
-}
-
-    .product {
-  background-color: #f7f7f7; /* Добавьте фон */
-  width: auto; /* Change here to make product width flexible */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* It will push the Remove button to bottom */
-  margin-top: 20px;
-  margin-left: 33px;
-  
-  width: calc(44% - 25px);
-  border: none; /* Вместо этой строки добавьте две следующие строки */
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15); /* Тень вокруг карточки */
-  border-radius: 20px; /* Углы карточки */
-  font-weight: bold;
-  cursor: pointer;
-  display: inline-block;
-  transition: transform .2s; /* Анимация увеличения при наведении */
-}
-.category-selected {
- border-bottom: 5px solid #FE3A4A;
- transition: .2s linear; /* Добавьте эту строку */
-}
-/* Увеличение карточки при наведении */
-
-.product img {
-  max-width: 100%;
-  height: auto;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15); /* Тень вокруг изображения */
-  border-radius: 10px; /* Углы картинки */
-}
-
-.product h2 {
- 
-  margin: 10px 0; /* Current CSS declaration */
-  font-size: 16px;
-}
-
-.product p {
-
-  font-size: 1.0em; 
-  color: #292929;
-  margin-top: -10px; /* Add this line to reduce space between h2 and p */
- 
-}
-#productSection {
-  display: block; 
-  margin: 0 auto; /* For center align */
-  width: 100%; /* Change here */
-}
-.info-section {
-  display: flex;
-  justify-content: flex-start;
- 
-  border-radius: 10px;
-  align-items: center; 
-  width: 380px;
-  padding-left: 10px;
-  margin-top: 5px;
-  
-  
-}
-.modal-content .cart > :nth-child(odd) {
-  justify-content: flex-start;
-  display: flex;
-}
-.info-block {
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
-  font-size: 11px;
-}
-
-.info-block img {
-  margin-right: 10px;
-}
-.product button {
-  display: inline-block;
-  background-color: #ffffff;
-  color: rgb(34, 34, 34);
-  padding: 10px 20px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  font-weight: bold;
-  width: 100%;
-}
-.bottomCart {
-  position: fixed;
-  bottom: 0;
-  width: 250px;
-  background-color: #ffffff; /* Any color of your choice */
-  text-align: center;
-  color: #303030; /* to make text color white */
-  font-size: 10px;
-  border-radius: 30px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15); /* Тень вокруг карточки */
-  margin-bottom: 10px;
-  
-}
-.modal {
-  display: none; /* Скрыто по умолчанию */
-  position: fixed; /* Будет оставаться на месте */
-  z-index: 1; /* Будет находиться поверх всего */
-  left: 0;
-  top: 0;
-  width: 100%; /* Полная ширина */
-  height: 100%; /* Полная высота */
-  overflow: auto; /* Добавьте скролл, если содержимое больше экрана */
-  background-color: rgb(0,0,0); /* Полупрозрачный фон */
-  background-color: rgba(0,0,0,0.4); /* Полупрозрачный фон (черный с прозрачностью .4) */
-}
-
-.modal-content {
-  border-radius: 50px; /* <- Добавлено это свойство */
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% сверху и в центре */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Ширина модального окна */
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-.mySlides {display:none;}
-
-  </style>
-  
   <script>
 
-var products = {}; // Will be used to store product information
-    
-function loadProducts() {
-  products = {
-    'combo-set': [{'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽', 'grams': '100 г'}, 
-           {'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽', 'grams': '110 г'},
-           {'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽', 'grams': '100 г'},
-           {'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽', 'grams': '120 г'}],
-    'roll-set': [
-    {'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽'},
-      {'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽'},
-      {'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽'},
-      {'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽'}
-    ],
-    'number-rolls': [
-    {'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽'},
-      {'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽'},
-      {'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽'},
-      {'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽'}
-    ],
-    'fish-rolls': [
-    {'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽'},
-      {'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽'},
-      {'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽'},
-      {'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽'}
-    ],
-    'nova-set': [
-    {'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽'},
-      {'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽'},
-      {'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽'},
-      {'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽'}
-    ],
-    'sushi-set': [
-    {'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽'},
-      {'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽'},
-      {'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽'},
-      {'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽'}
-    ],
-    'classic-sushi': [
-    {'img': 'img/s1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽'},
-      {'img': 'img/s2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽'},
-      {'img': 'img/s3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽'},
-      {'img': 'img/s4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽'}
-    ]
-  };
-}
-var cart = []; // Пустая корзина в начале
+    var products = {}; // Will be used to store product information
 
-var products = {}
-function addToCart(product) {
-  cart.push(product);
-  displayCart();
-}
 
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  displayCart();
-}
-function displayCart() {
-  const cartSection = document.getElementById('cartModalContent');
-  let totalPrice = 0;
-  let innerHTML = `<h2>Корзина:</h2><div class="cart">`;
 
-    for(let i = 0; i < cart.length; i++) {
-  totalPrice += parseInt(cart[i].price.replace(" ₽", ""));
-  innerHTML += `<div class="product">
-                  <img src=${cart[i].img} alt=${cart[i].name}>
-                  <h2>${cart[i].name}</h2>
-                  <p>${cart[i].price}</p>
-                  <div style="display:flex; justify-content:center">
-                    <button onclick="removeFromCart(${i})">Удалить</button>
-                  </div>
-                </div>`;
-}
-  innerHTML += `</div>`;
-  cartSection.innerHTML = innerHTML;
+    var cart = []; // Пустая корзина в начале
+    function loadProducts() {
+      products = {
+        'combo-set': [{ 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽', 'grams': '100 г' },
+        { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽', 'grams': '110 г' },
+        { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽', 'grams': '100 г' },
+        { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽', 'grams': '120 г' }],
+        'roll-set': [
+          { 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽' },
+          { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽' },
+          { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽' },
+          { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽' }
+        ],
+        'number-rolls': [
+          { 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽' },
+          { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽' },
+          { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽' },
+          { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽' }
+        ],
+        'fish-rolls': [
+          { 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽' },
+          { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽' },
+          { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽' },
+          { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽' }
+        ],
+        'nova-set': [
+          { 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽' },
+          { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽' },
+          { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽' },
+          { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽' }
+        ],
+        'sushi-set': [
+          { 'img': 'img/k7.jpg', 'name': 'Палочки', 'price': '3 ₽', 'grams': '0 г' },
+          { 'img': 'img/k4.jpg', 'name': 'Васаби', 'price': '15 ₽', 'grams': '20 г' },
+          { 'img': 'img/k6.jpg', 'name': 'Имбирь', 'price': '15 ₽', 'grams': '100 г' },
+          { 'img': 'img/k3.jpg', 'name': 'Комплект для суши', 'price': '30 ₽', 'grams': '100 г' },
+          { 'img': 'img/k5.jpg', 'name': 'Соевый соус', 'price': '15 ₽', 'grams': '100 мл' },
+          { 'img': 'img/k1.jpg', 'name': 'Соус тар-тар', 'price': '25 ₽', 'grams': '50 мл' },
+          { 'img': 'img/k2.jpg', 'name': 'Соус спайси', 'price': '25 ₽', 'grams': '50 мл' }
+        ],
+        'classic-sushi': [
+          { 'img': 'img/s1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽', 'grams': '100 г' },
+          { 'img': 'img/s2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽', 'grams': '100 г' },
+          { 'img': 'img/s3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽', 'grams': '100 г' },
+          { 'img': 'img/s4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽', 'grams': '100 г' }
+        ]
+      }
 
-  document.getElementById('totalPriceSection').innerHTML = `<h2>ОФОРМИТЬ ЗАКАЗ: ${totalPrice} ₽</h2>`;
-}
-function displayProduct(productType) {
-  const section = document.getElementById('productSection');
-  var innerHTML = '';
-  const categoryElements = document.querySelectorAll(".category");
-  categoryElements.forEach((el) => {
-    // Удалем класс .category-selected у всех элементов
-    el.classList.remove("category-selected");
-    // Добавляем класс .category-selected выбранному элементу
-    if (el.classList.contains(productType)) { 
-      el.classList.add("category-selected");
+    };
+    function addToCart(category, productIndex) {
+      var product = products[category][productIndex];
+
+      // добавляем свойство category в каждый продукт
+      product.category = category;
+
+      var existingProduct = cart.find((item) => item.name === product.name && item.category === product.category);
+
+      if (existingProduct) {
+        existingProduct.quantity++;
+      } else {
+        product.quantity = 1;
+        cart.push(product);
+      }
+
+      displayCart();
     }
-  });
-  for(let i = 0; i < products[productType].length; i++) {
-    innerHTML += `<div class="product">
-                    <img src=${products[productType][i].img} alt=${products[productType][i].name}>
-                    <h2>${products[productType][i].name}</h2>
-                    <p>${products[productType][i].price}</p>
-                    <p>${products[productType][i].grams}</p>
-                    <button onclick="addToCart(products['${productType}'][${i}])">ДОБАВИТЬ</button>
-                  </div>`;
-  }
-  
 
-  section.innerHTML = innerHTML;
-}
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      displayCart();
+    }
+    function increaseQuantityInCart(index) {
+      cart[index].quantity++;
+      displayCart();
+    }
+    function decreaseQuantityInCart(index) {
+      if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+      } else {
+        removeFromCart(index);
+      }
+
+      displayCart();
+    }
+    function displayCart() {
+      const cartSection = document.getElementById('cartModalContent');
+      let totalPrice = 0;
+      let innerHTML = `<h2 class="ots"></h2><div class="cart">`;
+
+      for (let i = 0; i < cart.length; i++) {
+        totalPrice += parseInt(cart[i].price.replace(" ₽", "")) * cart[i].quantity;
+        innerHTML += `
+ <div class="product-details">
+    <img src=${cart[i].img} alt=${cart[i].name}>
+    <div>
+      <div class="ed">
+      <h2 class="tovartext">${cart[i].name}</h2>
+      <p class="tovartext1">${cart[i].price}</p>
+      </div>
+      <div class="botb">
+      <button onclick="decreaseQuantityInCart(${i})">-</button>${cart[i].quantity} 
+      <button onclick="increaseQuantityInCart(${i})">+</button></div>
+
+    </div>              
+</div>`;
+
+
+
+      }
+
+      cartSection.innerHTML = innerHTML;
+
+      document.getElementById('totalPriceSection').innerHTML = `<h2>ОФОРМИТЬ ЗАКАЗ: ${totalPrice} ₽</h2>`;
+    }
+    function displayProduct(productType) {
+      const section = document.getElementById('productSection');
+      var innerHTML = '';
+      const categoryElements = document.querySelectorAll(".category");
+      categoryElements.forEach((el) => {
+        // Удалем класс .category-selected у всех элементов
+        el.classList.remove("category-selected");
+        // Добавляем класс .category-selected выбранному элементу
+        if (el.classList.contains(productType)) {
+          el.classList.add("category-selected");
+        }
+      });
+      for (let i = 0; i < products[productType].length; i++) {
+        innerHTML += `<div class="product">
+      <img src=${products[productType][i].img} alt=${products[productType][i].name}>
+      <h2>${products[productType][i].name}</h2>
+      <p>${products[productType][i].price} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ${products[productType][i].grams}</p>
+      <div class="product-quantity">
+        <button class="boldMontserrat" onclick="addToCart('${productType}', ${i})">ДОБАВИТЬ</button>
+      </div>
+    </div>`;
+
+      }
+
+
+      section.innerHTML = innerHTML;
+    }
     window.onload = loadProducts;
 
-</script>
+  </script>
 
 </head>
+
 <body>
-  
+
+
   <div class="header-image-container">
     <img id="header-image" src="img/Frame 56.jpg" alt="Header Image">
   </div>
-  
+
   <header>
     <div class="categories">
-     <div class="category combo-set" onclick="displayProduct('combo-set')">
+      <div class="category combo-set" onclick="displayProduct('combo-set')">
         <h2>Комбо Сеты</h2>
       </div>
-      
+
       <div class="category roll-set" onclick="displayProduct('roll-set')">
         <h2>Наборы Роллов</h2>
-    </div>
-      
-    <div class="category number-rolls" onclick="displayProduct('number-rolls')">
-      <h2>Цифра Роллы</h2>
-    </div>
-        
-    <div class="category fish-rolls" onclick="displayProduct('fish-rolls')">
-      <h2>Фиш Роллы</h2>
-    </div>
-        
-    <div class="category nova-set" onclick="displayProduct('nova-set')">
-      <h2>Нова Сеты</h2>
-    </div>
-        
-    <div class="category sushi-set" onclick="displayProduct('sushi-set')">
-      <h2>Комплекты Суши</h2>
-    </div>
-        
-    <div class="category classic-sushi" onclick="displayProduct('classic-sushi')">
-      <h2>Суши Классика</h2>
-    </div>
+      </div>
+
+      <div class="category number-rolls" onclick="displayProduct('number-rolls')">
+        <h2>Цифра Роллы</h2>
+      </div>
+
+      <div class="category fish-rolls" onclick="displayProduct('fish-rolls')">
+        <h2>Фиш Роллы</h2>
+      </div>
+
+      <div class="category nova-set" onclick="displayProduct('nova-set')">
+        <h2>Нова Сеты</h2>
+      </div>
+
+      <div class="category sushi-set" onclick="displayProduct('sushi-set')">
+        <h2>Комплекты Суши</h2>
+      </div>
+
+      <div class="category classic-sushi" onclick="displayProduct('classic-sushi')">
+        <h2>Суши Классика</h2>
+      </div>
     </div>
     <div class="info-section">
       <div class="info-block">
@@ -424,63 +213,121 @@ function displayProduct(productType) {
         <p>10:00 - 22:00 (ПТ-СБ 23:00)</p>
       </div>
     </div>
-      <div class="header-image-container">
-    <img class="mySlides" src="img/Frame 57.jpg" style="width:100%">
-    <img class="mySlides" src="img/Frame 58.jpg" style="width:100%">
-  </div>
+    <div class="header-image-container">
+      <img class="mySlides" src="img/Frame 57.jpg" style="width:100%"
+        onclick="window.open('https://vk.com/sushiclassic74', '_self')">
+      <img class="mySlides" src="img/Frame 58.jpg" style="width:100%"
+        onclick="window.open('https://vk.com/sushiclassic74', '_self')">
+    </div>
 
-  <div id="cartSection" style="display:none;"> <h2></h2> </div>
+    <div id="cartSection" style="display:none;">
+      <h2></h2>
+    </div>
 
-<div class="bottomCart" id="totalPriceSection">
-  <h2>Общая сумма: 0 ₽</h2>
-</div>
-     <script>
-    // Your JS for products, etc
-    window.onload = function() {
-  loadProducts();
-  displayProduct('combo-set');
+    <div class="bottomCart" id="totalPriceSection">
+      <h2>Общая сумма: 0 ₽</h2>
+    </div>
+    <script>
+      // Your JS for products, etc
+      window.onload = function () {
+        loadProducts();
+        displayProduct('combo-set');
 
-  carousel(); // move the function call inside here
-};
-    var myIndex = 0;
-    carousel();
+        carousel(); // move the function call inside here
+      };
+      var myIndex = 0;
+      carousel();
 
-    function carousel() {
-      var i;
-      var x = document.getElementsByClassName("mySlides");
-      for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";  
-      }
-      myIndex++;
-      if (myIndex > x.length) {myIndex = 1}    
-      x[myIndex-1].style.display = "block";  
-      setTimeout(carousel, 4000); // Change image every 2 seconds
-    }    
-  </script>
+      function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) { myIndex = 1 }
+        x[myIndex - 1].style.display = "block";
+        setTimeout(carousel, 4000); // Change image every 2 seconds
+      }    
+    </script>
   </header>
-  
+
   <section id='productSection'>
     <!-- Iframe content / Product display goes here -->
   </section>
   <div id="myModal" class="modal">
     <div class="modal-content">
-      <span class="close">&times;</span>
-      <div id="cartModalContent">
+      <div class="modal-header">
+        <span class="close">☚</span>
+        <h2 class="ots">Корзина</h2>
+
       </div>
+      <div id="paymentModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="paymentClose">☚</span>
+            <h2 class="ots">Выберите способ оплаты</h2>
+          </div>
+          <button class="form-control1" onclick="setPaymentMethod('Наличными курьеру')">Наличными курьеру</button>
+          <button class="form-control1" onclick="setPaymentMethod('Картой курьеру')">Картой курьеру</button>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+        </div>
+      </div>
+      <div id="productModal" class="modal">
+        <div class="modal-content1">
+          <div class="modal-header1">
+            <span class="productClose">☚</span>
+            <h2 class="ots">Комплекты Суши</h2>
+          </div>
+          <div id="productModalContent">
+            <!-- Product content goes here -->
+          </div>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+        </div>
+      </div>
+      <div id="cartModalContent"></div>
+      <div class="extra-details">
+        <div class="ROW">
+          <img src="img/zakaz2.svg" width="40px" height="40px" class="img1">
+          <h5>🛵 ~ 60-120 мин.
+            доставка 100 рублей
+          </h5>
+        </div>
+
+        <div class="input-group">
+          <img src="img/zakaz5.svg" width="40px" height="40px">
+          <input type="text" id="deliveryAddress" class="form-control" placeholder="Введите адрес доставки">
+        </div>
+
+
+
+
+        <div class="input-group">
+          <img src="img/zakaz3.svg" width="40px" height="40px">
+          <button type="button" id="selectPaymentBtn" class="form-control">Выбрать способ оплаты</button>
+        </div>
+
+        <div class="input-group">
+          <img src="img/zakaz4.svg" width="40px" height="40px">
+          <input type="text" id="orderComment" class="form-control" placeholder="Комментарий к заказу">
+        </div>
+
+        <div class="input-group">
+          <img src="img/zakaz1.svg" width="40px" height="40px">
+          <input type="text" id="promoCode" class="form-control" placeholder="Введите промокод">
+        </div>
+
+
+      </div>
+      <div class="ooo">
+        <button id="addToOrderBtn" onclick="openProductModal('sushi-set')">Добавить к заказу</button>
+        <button id="checkoutBtn" disabled>Оформить заказ</button>
+         
+      </div>
+      <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
     </div>
-    <form id="orderForm" style="display: none;">
-      <h2>Укажите данные для заказа</h2>
-      <label for="address">Адрес:</label>
-      <input type="text" id="address" name="address" required>
-      
-      <label for="payment">Способ оплаты:</label>
-      <select id="payment" name="payment">
-        <option value="cash">Наличными при получении</option>
-        <option value="card">Картой онлайн</option>
-      </select>
-      
-      <input type="submit" value="Подтвердить заказ">
-    </form>
+  </div>
+
 </body>
 <script>
   // Your JS for products, etc
@@ -499,14 +346,94 @@ function displayProduct(productType) {
 
   var span = document.getElementsByClassName("close")[0];
 
-  span.onclick = function() {
+  // устанавливаем событие на крестик
+  span.onclick = function () {
     modal.style.display = "none";
   }
 
-  window.onclick = function(event) {
+  window.onclick = function (event) {
     if (event.target == modal) {
       modal.style.display = "none";
     }
   }
+
+  document.getElementById('cartModalContent').style.marginTop = "10px";
+</script>
+<script>
+  // Переместите весь JavaScript код, включающий выбор способа оплаты в конец HTML файла, внутрь функции window.onload.
+
+  window.onload = function () {
+    loadProducts();
+    displayProduct('combo-set');
+    carousel(); // move the function call inside here
+
+    // Получаем элементы модального окна
+    var paymentModal = document.getElementById("paymentModal");
+    var paymentBtn = document.getElementById("selectPaymentBtn");
+    var paymentClose = document.getElementsByClassName("paymentClose")[0];
+
+    // Когда пользователь нажимает на кнопку, открываем модальное окно 
+    paymentBtn.onclick = function () {
+      paymentModal.style.display = "block";
+    }
+
+    // Когда пользователь нажимает на <span> (x), закрываем модальное окно
+    paymentClose.onclick = function () {
+      paymentModal.style.display = "none";
+    }
+
+    // Если пользователь нажимает где-то вне модального окна, закрываем его
+    window.onclick = function (event) {
+      if (event.target == paymentModal) {
+        paymentModal.style.display = "none";
+      }
+    }
+
+    // Устанавливаем выбранный способ оплаты и закрываем модальное окно
+    window.setPaymentMethod = function (method) {
+      paymentBtn.innerText = method;
+      paymentModal.style.display = "none";
+    }
+  }
+</script>
+<script>
+  function openProductModal(productType) {
+    displayProduct(productType);
+    document.getElementById('productModalContent').innerHTML = document.getElementById('productSection').innerHTML;
+    document.getElementById('productModal').style.display = "block";
+  }
+  var productModal = document.getElementById('productModal');
+  var productClose = document.getElementsByClassName('productClose')[0];
+
+  productClose.onclick = function () {
+    productModal.style.display = "none";
+  };
+
+  window.onclick = function (event) {
+    if (event.target == productModal) {
+      productModal.style.display = "none";
+    }
+  };
+</script>
+<script>
+  let tg = window.Telegram.WebApp;
+  let buy = document.getElementById("checkoutBtn")
+  buy.addEventListener("click",() => {
+    let name = document.getElementById("name").value;
+    let deliveryAddress = document.getElementById("deliveryAddress").value;
+    let selectPaymentBtn = document.getElementById("selectPaymentBtn").value;
+    let orderComment = document.getElementById("orderComment").value;
+    let promoCode= document.getElementById("promoCode").value;
+    let data = {
+      товары: name,
+      адресс_доставки:deliveryAddress,
+      Способ_оплаты:selectPaymentBtn,
+      Комментарий_к_заказу:orderComment,
+      Промокод:promoCode
+    }
+    tg.sendData(JSON.stringify(data));
+    tg.close();
+  });
+
 </script>
 </html>
