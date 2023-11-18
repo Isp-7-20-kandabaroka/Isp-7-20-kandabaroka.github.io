@@ -16,9 +16,6 @@
 </head>
 
 <body>
-  <div class="header-image-container">
-    <img id="header-image" src="img/Frame 56.jpg" alt="Header Image">
-  </div>
   <header>
     <div class="categories">
       <div class="category combo-set" onclick="displayProduct('combo-set')">
@@ -71,7 +68,7 @@
     </div>
 
     <div class="bottomCart" id="totalPriceSection">
-      <h2>Общая сумма: 0 ₽</h2>
+      <h2 class="g1">Общая сумма: 0 ₽</h2>
     </div>
     <script>
       // Your JS for products, etc
@@ -286,14 +283,11 @@
 
   </div>              
 </div>`;
-
-
-
     }
 
     cartSection.innerHTML = innerHTML;
 
-    document.getElementById('totalPriceSection').innerHTML = `<h2>ОФОРМИТЬ ЗАКАЗ: ${totalPrice} ₽</h2>`;
+    document.getElementById('totalPriceSection').innerHTML = `<h2 class="g1">ОФОРМИТЬ ЗАКАЗ: ${totalPrice} ₽</h2>`;
   }
   function displayProduct(productType) {
     const section = document.getElementById('productSection');
@@ -356,7 +350,7 @@
   document.getElementById('cartModalContent').style.marginTop = "10px";
 </script>
 <script>
-  // Переместите весь JavaScript код, включающий выбор способа оплаты в конец HTML файла, внутрь функции window.onload.
+  
 
   window.onload = function () {
     loadProducts();
@@ -415,24 +409,18 @@
 <script>
   let tg = window.Telegram.WebApp;
   let buy = document.getElementById("checkoutBtn")
-  buy.onclick = function(){
-    let name = document.getElementById("name").value;
-    let deliveryAddress = document.getElementById("deliveryAddress").value;
-    let selectPaymentBtn = document.getElementById("selectPaymentBtn").value;
-    let orderComment = document.getElementById("orderComment").value;
+
+  buy.addEventListener("click",function() {
     let promoCode = document.getElementById("promoCode").value;
+    
     tg.expand();
     let data = {
-      товары: name,
-      deliveryAddress: deliveryAddress,
-      selectPaymentBtn: selectPaymentBtn,
-      orderComment: orderComment,
       promoCode: promoCode
     }
     tg.sendData(JSON.stringify(data));
     tg.close();
-  };
 
+  });
 </script>
 
 </html>
