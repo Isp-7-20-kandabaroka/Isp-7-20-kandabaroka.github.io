@@ -1,3 +1,4 @@
+@media (max-width: 768px) {
 body {
   background-color: #ffffff;
   font-family: 'Montserrat Alternates', sans-serif;
@@ -7,13 +8,29 @@ body {
   padding: 0;
   height: 1170px;
 }
+}
+@media (max-width: 768px) {
+  header {
+    padding: 0px 0px 0;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Changed from center to flex-start */
+    background-color: white;
+    margin-top: 20px;
+  }
+}
 
+@media (max-width: 768px) {
 .header-image-container {
   display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  overflow: hidden;
-
+  justify-content: center;
+  width: calc(100% - 60px);
+  overflow: scroll;
+  /* this line is to hide the part of the image that goes beyond the container */
+  padding: 0 30px;
+}
 }
 
 #frame57,
@@ -32,7 +49,6 @@ body {
 }
 
 .boldMontserrat {
-
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: 500;
   height: 50px;
@@ -49,25 +65,7 @@ h2 {
   text-transform: uppercase;
 }
 
-header {
-  padding: 0px 0px 0;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  /* Changed from center to flex-start */
-  background-color: white;
-  margin-top: 20px;
-}
 
-.header-image-container {
-  display: flex;
-  justify-content: center;
-  width: calc(100% - 60px);
-  overflow: hidden;
-  /* this line is to hide the part of the image that goes beyond the container */
-  padding: 0 30px;
-}
 
 #header-image {
   max-width: 100%;
@@ -148,12 +146,6 @@ header {
   /* Устанавливаем размер шрифта */
   font-family: 'Montserrat Alternates', sans-serif;
   /* Определяем семейство шрифтов */
-}
-
-.categories {
-  max-width: 100%;
-  overflow-x: auto;
-  scrollbar-width: thin;
 }
 
 #selectPaymentBtn {
@@ -237,7 +229,7 @@ button {
     max-width: 360px;
     overflow-x: visible;
     /* disable horizontal scroll when screen is wider than 560px */
-    scrollbar-width: none;
+    
     /* hide scrollbar */
   }
 }
@@ -249,7 +241,7 @@ button {
   -webkit-overflow-scrolling: touch;
   gap: 10px;
   padding: 0px;
-  margin-top: -30px;
+  margin-top: -20px;
   background-color: #ffffff;
   padding-left: 20px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
@@ -308,7 +300,7 @@ button {
   margin-left: 10px;
   font-size: 16px;
 }
-
+@media (max-width: 768px) {
 .product {
   padding: 15px;
   background-color: #ffffff;
@@ -337,6 +329,7 @@ button {
   display: inline-block;
   transition: transform .2s;
   /* Анимация увеличения при наведении */
+}
 }
 
 .product p {
@@ -432,7 +425,9 @@ button {
 
   width: 100%;
 }
-
+.g1{
+  font-weight: 500;
+}
 .bottomCart {
   position: fixed;
   bottom: 0;
@@ -562,9 +557,4 @@ button {
   border: 1px solid #88888800;
   width: 100%;
   /* 100% ширины */
-}
-
-
-.mySlides {
-  display: none;
 }
