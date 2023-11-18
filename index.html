@@ -408,9 +408,9 @@
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
   let tg = window.Telegram.WebApp;
-  let buy = document.getElementById("checkoutBtn")
+  let checkoutBtn = document.getElementById("checkoutBtn")
 
-  buy.addEventListener("click",function() {
+  checkoutBtn.addEventListener("click",function() {
     let promoCode = document.getElementById("promoCode").value;
     
     tg.expand();
