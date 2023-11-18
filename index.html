@@ -411,14 +411,27 @@
   let checkoutBtn = document.getElementById("checkoutBtn")
 
   checkoutBtn.addEventListener("click",function() {
-    let promoCode = document.getElementById("promoCode").value;
-    
-    tg.expand();
-    let data = {
-      promoCode: promoCode
+  let promoCode = document.getElementById("promoCode").value;
+  let orderComment = document.getElementById("orderComment").value; // Получаем комментарии к заказу
+  let deliveryAddress = document.getElementById("deliveryAddress").value; // Получаем адрес доставки
+
+  let productsInCart = cart.map(product => {
+    return {
+      name: product.name,
+      quantity: product.quantity,
+      category: product.category
     }
-    tg.sendData(JSON.stringify(data));
-    tg.close();
+  }); // Получаем все товары и их количество в корзине
+  
+  tg.expand();
+  let data = {
+    promoCode: promoCode,
+    orderComment: orderComment,
+    deliveryAddress: deliveryAddress,
+    productsInCart: productsInCart
+  }
+  tg.sendData(JSON.stringify(data));
+  tg.close();
 
   });
 </script>
