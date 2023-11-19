@@ -262,10 +262,18 @@
 
     displayCart();
   }
+
   function displayCart() {
     const cartSection = document.getElementById('cartModalContent');
+    const bottomCart = document.getElementById('totalPriceSection'); // Получаем доступ к bottomCart
     let totalPrice = 0;
     let innerHTML = `<h2 class="ots"></h2><div class="cart">`;
+
+    if (cart.length > 0) {
+      bottomCart.classList.add("bottomCart-show"); // Show bottomCart 
+    } else {
+      bottomCart.classList.remove("bottomCart-show"); // Hide bottomCart 
+    }
 
     for (let i = 0; i < cart.length; i++) {
       totalPrice += parseInt(cart[i].price.replace(" ₽", "")) * cart[i].quantity;
@@ -350,7 +358,7 @@
   document.getElementById('cartModalContent').style.marginTop = "10px";
 </script>
 <script>
-  
+
 
   window.onload = function () {
     loadProducts();
@@ -410,30 +418,59 @@
   let tg = window.Telegram.WebApp;
   let checkoutBtn = document.getElementById("checkoutBtn")
 
-  checkoutBtn.addEventListener("click",function() {
-  let promoCode = document.getElementById("promoCode").value;
-  let orderComment = document.getElementById("orderComment").value; // Получаем комментарии к заказу
-  let deliveryAddress = document.getElementById("deliveryAddress").value; // Получаем адрес доставки
+  checkoutBtn.addEventListener("click", function () {
+    let promoCode = document.getElementById("promoCode").value;
+    let orderComment = document.getElementById("orderComment").value; // Получаем комментарии к заказу
+    let deliveryAddress = document.getElementById("deliveryAddress").value; // Получаем адрес доставки
 
-  let productsInCart = cart.map(product => {
-    return {
-      name: product.name,
-      quantity: product.quantity,
-      price: product.price
+    let productsInCart = cart.map(product => {
+      return {
+        name: product.name,
+        quantity: product.quantity,
+        price: product.price
+      }
+    });
+
+    tg.expand();
+    let data = {
+      promoCode: promoCode,
+      orderComment: orderComment,
+      deliveryAddress: deliveryAddress,
+      productsInCart: productsInCart
     }
-});
-  
-  tg.expand();
-  let data = {
-    promoCode: promoCode,
-    orderComment: orderComment,
-    deliveryAddress: deliveryAddress,
-    productsInCart: productsInCart
-  }
-  tg.sendData(JSON.stringify(data));
-  tg.close();
+    tg.sendData(JSON.stringify(data));
+    tg.close();
 
   });
 </script>
+<script>
+  const slider = document.querySelector('.categories');
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+  });
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 3; //scroll-fast
+    slider.scrollLeft = scrollLeft - walk;
+  });
+</script>
+
 
 </html>
