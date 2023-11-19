@@ -1,14 +1,15 @@
 @media (max-width: 768px) {
-body {
-  background-color: #ffffff;
-  font-family: 'Montserrat Alternates', sans-serif;
-  font-weight: 900;
-  text-transform: uppercase;
-  margin: 0;
-  padding: 0;
-  height: 1170px;
+  body {
+    background-color: #ffffff;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0;
+    height: 1170px;
+  }
 }
-}
+
 @media (max-width: 768px) {
   header {
     padding: 0px 0px 0;
@@ -23,14 +24,14 @@ body {
 }
 
 @media (max-width: 768px) {
-.header-image-container {
-  display: flex;
-  justify-content: center;
-  width: calc(100% - 60px);
-  overflow: scroll;
-  /* this line is to hide the part of the image that goes beyond the container */
-  padding: 0 30px;
-}
+  .header-image-container {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 60px);
+    overflow: scroll;
+    /* this line is to hide the part of the image that goes beyond the container */
+    padding: 0 30px;
+  }
 }
 
 #frame57,
@@ -53,6 +54,7 @@ body {
   font-weight: 500;
   height: 50px;
 }
+
 
 h1 {
   text-align: center;
@@ -224,30 +226,27 @@ button {
   /* Фоновый цвет */
 }
 
-@media screen and (min-width: 370px) {
-  .categories {
-    max-width: 360px;
-    overflow-x: visible;
-    /* disable horizontal scroll when screen is wider than 560px */
-    
-    /* hide scrollbar */
-  }
-}
 
+@media screen and (min-width: 370px) {
 .categories {
+  width: 369px;
+  /* Для возможности прокручивания */
+  overflow-x: auto;
+  
+  /* Убираем полосу прокрутки */
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  gap: 10px;
+  gap: 20px;
   padding: 0px;
   margin-top: -20px;
   background-color: #ffffff;
   padding-left: 20px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
-  border-radius: 10px;
   align-items: flex-start;
-  scrollbar-width: none;
+
+}
 }
 
 .categories::-webkit-scrollbar {
@@ -263,12 +262,18 @@ button {
 }
 
 .category h2 {
+  
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: 900;
   color: rgb(34, 34, 34);
   cursor: pointer;
   font-size: 16px;
   /* <--- Add this line to decrease the font size */
+}
+.category-selected h2 {
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+
 }
 
 .cart {
@@ -279,10 +284,10 @@ button {
   padding: 20px;
 }
 
-
 .category-selected {
-  border-bottom: 5px solid #FE3A4A;
-  transition: .2s linear;
+  padding: 5px;
+  transition: 1s;
+  background: linear-gradient(45deg, #FE3A4A, #FF512F);
   /* Добавьте эту строку */
 }
 
@@ -300,38 +305,38 @@ button {
   margin-left: 10px;
   font-size: 16px;
 }
-@media (max-width: 768px) {
-.product {
-  padding: 15px;
-  background-color: #ffffff;
-  /* Добавьте фон */
-  width: auto;
-  /* Change here to make product width flexible */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  /* It will push the Remove button to bottom */
-  margin-top: 20px;
-  margin-left: 12px;
-  flex-direction: row;
-  /* Changed from column to row */
-  align-items: center;
-  /* Add this line */
-  width: calc(44% - 25px);
-  border: none;
-  /* Вместо этой строки добавьте две следующие строки */
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-  /* Тень вокруг карточки */
-  border-radius: 20px;
-  /* Углы карточки */
-  font-weight: bold;
-  cursor: pointer;
-  display: inline-block;
-  transition: transform .2s;
-  /* Анимация увеличения при наведении */
-}
-}
 
+@media (max-width: 768px) {
+  .product {
+    padding: 15px;
+    background-color: #ffffff;
+    /* Добавьте фон */
+    width: auto;
+    /* Change here to make product width flexible */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* It will push the Remove button to bottom */
+    margin-top: 20px;
+    margin-left: 12px;
+    flex-direction: row;
+    /* Changed from column to row */
+    align-items: center;
+    /* Add this line */
+    width: calc(44% - 25px);
+    border: none;
+    /* Вместо этой строки добавьте две следующие строки */
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+    /* Тень вокруг карточки */
+    border-radius: 20px;
+    /* Углы карточки */
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    transition: transform .2s;
+    /* Анимация увеличения при наведении */
+  }
+}
 .product p {
   font-weight: 500;
   font-size: 1.0em;
@@ -425,26 +430,25 @@ button {
 
   width: 100%;
 }
-.g1{
-  font-weight: 500;
-}
+
 .bottomCart {
-  position: fixed;
-  bottom: 0;
-  width: 250px;
-  background-color: #ffffff;
-  /* Any color of your choice */
-  text-align: center;
-  color: #303030;
-  /* to make text color white */
   font-size: 10px;
-  border-radius: 30px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
-  /* Тень вокруг карточки */
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  visibility: hidden;
+  background-color: rgb(255, 255, 255);
+  transform: translateY(100%);
+  transition: visibility 0s, transform 0.5s linear;
+  position: fixed;
+  height: 60px;
+  color: #000000;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding-top: 15px;
+  padding-left: -5px;
+}
+.bottomCart-show {
+  visibility: visible;
+  transform: translateY(0);
 }
 
 .modal {
@@ -557,4 +561,7 @@ button {
   border: 1px solid #88888800;
   width: 100%;
   /* 100% ширины */
+}
+.g1{
+  font-weight: 500;
 }
