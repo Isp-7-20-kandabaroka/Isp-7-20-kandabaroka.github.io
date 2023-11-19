@@ -101,14 +101,14 @@
   <div id="myModal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
-        <span class="close">☚</span>
+        <span class="close">←&nbsp</span>
         <h2 class="ots">Корзина</h2>
 
       </div>
       <div id="paymentModal" class="modal">
         <div class="modal-content">
           <div class="modal-header">
-            <span class="paymentClose">☚</span>
+            <span class="paymentClose">←&nbsp</span>
             <h2 class="ots">Выберите способ оплаты</h2>
           </div>
           <button class="form-control1" onclick="setPaymentMethod('Наличными курьеру')">Наличными курьеру</button>
@@ -119,7 +119,7 @@
       <div id="productModal" class="modal">
         <div class="modal-content1">
           <div class="modal-header1">
-            <span class="productClose">☚</span>
+            <span class="productClose">←&nbsp</span>
             <h2 class="ots">Комплекты Суши</h2>
           </div>
           <div id="productModalContent">
@@ -130,37 +130,28 @@
       </div>
       <div id="cartModalContent"></div>
       <div class="extra-details">
-        <div class="ROW">
-          <img src="img/zakaz2.svg" width="40px" height="40px" class="img1">
-          <h5>🛵 ~ 60-120 мин.
-            доставка 100 рублей
-          </h5>
-        </div>
-
         <div class="input-group">
-          <img src="img/zakaz5.svg" width="40px" height="40px">
+          <img src="img/zakaz4.svg" width="40px" height="40px">
           <input type="text" id="deliveryAddress" class="form-control" placeholder="Введите адрес доставки">
         </div>
-
-
-
-
         <div class="input-group">
-          <img src="img/zakaz3.svg" width="40px" height="40px">
+          <img src="img/zakaz5.svg" width="40px" height="40px">
           <button type="button" id="selectPaymentBtn" class="form-control">Выбрать способ оплаты</button>
         </div>
 
         <div class="input-group">
-          <img src="img/zakaz4.svg" width="40px" height="40px">
+          <img src="img/zakaz3.svg" width="40px" height="40px">
           <input type="text" id="orderComment" class="form-control" placeholder="Комментарий к заказу">
         </div>
 
         <div class="input-group">
-          <img src="img/zakaz1.svg" width="40px" height="40px">
+          <img src="img/zakaz2.svg" width="40px" height="40px">
           <input type="text" id="promoCode" class="form-control" placeholder="Введите промокод">
         </div>
-
-
+      </div>
+      <div class="input-group">
+        <img src="img/money.svg" width="40px" height="40px">
+        <span id="cartTotalPrice" class="form-control">Общая сумма: 0 ₽</span>
       </div>
       <div class="ooo">
         <button id="addToOrderBtn" onclick="openProductModal('sushi-set')">Добавить к заказу</button>
@@ -213,7 +204,7 @@
         { 'img': 'img/k7.jpg', 'name': 'Палочки', 'price': '3 ₽', 'grams': '0 г' },
         { 'img': 'img/k4.jpg', 'name': 'Васаби', 'price': '15 ₽', 'grams': '20 г' },
         { 'img': 'img/k6.jpg', 'name': 'Имбирь', 'price': '15 ₽', 'grams': '100 г' },
-        { 'img': 'img/k3.jpg', 'name': 'Комплект для суши', 'price': '30 ₽', 'grams': '100 г' },
+        { 'img': 'img/k3.jpg', 'name': 'Комплект', 'price': '30 ₽', 'grams': '100 г' },
         { 'img': 'img/k5.jpg', 'name': 'Соевый соус', 'price': '15 ₽', 'grams': '100 мл' },
         { 'img': 'img/k1.jpg', 'name': 'Соус тар-тар', 'price': '25 ₽', 'grams': '50 мл' },
         { 'img': 'img/k2.jpg', 'name': 'Соус спайси', 'price': '25 ₽', 'grams': '50 мл' }
@@ -277,6 +268,7 @@
 
     for (let i = 0; i < cart.length; i++) {
       totalPrice += parseInt(cart[i].price.replace(" ₽", "")) * cart[i].quantity;
+      window.totalPrice = totalPrice;
       innerHTML += `
 <div class="product-details">
   <img src=${cart[i].img} alt=${cart[i].name}>
@@ -294,6 +286,7 @@
     }
 
     cartSection.innerHTML = innerHTML;
+    document.getElementById('cartTotalPrice').innerText = `Общая сумма: ${totalPrice} ₽`;
 
     document.getElementById('totalPriceSection').innerHTML = `<h2 class="g1">ОФОРМИТЬ ЗАКАЗ: ${totalPrice} ₽</h2>`;
   }
@@ -422,7 +415,7 @@
     let promoCode = document.getElementById("promoCode").value;
     let orderComment = document.getElementById("orderComment").value; // Получаем комментарии к заказу
     let deliveryAddress = document.getElementById("deliveryAddress").value; // Получаем адрес доставки
-
+    let totalPrice = window.totalPrice;
     let productsInCart = cart.map(product => {
       return {
         name: product.name,
@@ -436,7 +429,8 @@
       promoCode: promoCode,
       orderComment: orderComment,
       deliveryAddress: deliveryAddress,
-      productsInCart: productsInCart
+      productsInCart: productsInCart,
+      totalPrice: totalPrice
     }
     tg.sendData(JSON.stringify(data));
     tg.close();
