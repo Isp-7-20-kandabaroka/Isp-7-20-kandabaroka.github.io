@@ -50,9 +50,13 @@
 }
 
 .boldMontserrat {
+  
   font-family: 'Montserrat Alternates', sans-serif;
   font-weight: 500;
   height: 50px;
+}
+.boldMontserrat:active {
+  background-color: #cccccc;
 }
 
 
@@ -111,6 +115,7 @@ h2 {
 
 #productModalContent {
   width: 150px;
+  overflow: hidden;
   /* Decrease the width */
   display: flex;
 }
@@ -168,6 +173,7 @@ h2 {
 }
 
 #checkoutBtn {
+  cursor: pointer;
   border: none;
   background-color: #ffffff;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
@@ -182,11 +188,14 @@ h2 {
 }
 
 #addToOrderBtn {
+  cursor: pointer;
+  background-color: #FE3A4A;
+  color: #fefefe;
   border: none;
   border-radius: 20px;
   height: 30px;
   text-align: center;
-  margin-top: 5px;
+  margin-top: 15px;
   width: 300px;
   margin-left: 44px;
 }
@@ -204,10 +213,11 @@ h2 {
 
 .paymentModal {
   height: 300px;
+  overflow: hidden;
 }
 
 button {
-
+  cursor: pointer;
   border: none;
   margin-right: 5px;
   border-radius: 50%;
@@ -328,8 +338,8 @@ button {
     flex-direction: column;
     justify-content: space-between;
     /* It will push the Remove button to bottom */
-    margin-top: 20px;
-    margin-left: 32px;
+    margin-top: 10px;
+    margin-left: 30px;
     flex-direction: row;
     /* Changed from column to row */
     align-items: center;
@@ -359,6 +369,7 @@ button {
 }
 
 .modal .product {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -447,6 +458,12 @@ button {
   display: flex;
   justify-content: center;
 }
+#cartTotalPrice{
+  text-align: center;
+  margin-left: 125px;
+  font-size: 12px;
+  font-weight: 500;
+}
 .bottomCart {
   font-size: 10px;
   visibility: hidden;
@@ -454,12 +471,11 @@ button {
   transform: translateY(100%);
   transition: visibility 0s, transform 0.5s linear;
   position: fixed;
-  height: 60px;
+  height: 40px;
   color: #ffffff;
   bottom: 0;
   width: 100%;
   text-align: center;
-  padding-top: 15px;
   padding-left: -5px;
   cursor: pointer;
 }
@@ -469,6 +485,7 @@ button {
 }
 
 .modal {
+  overflow: hidden;
   display: none;
   /* Скрыто по умолчанию */
   position: fixed;
@@ -492,6 +509,7 @@ button {
 }
 
 .modal-header {
+  overflow: hidden;
   display: flex;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
   /* Тень вокруг карточки */
@@ -502,6 +520,7 @@ button {
 }
 
 .modal-header1 {
+  overflow: hidden;
   display: flex;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
   /* Тень вокруг карточки */
@@ -523,6 +542,7 @@ button {
 }
 
 .close {
+  cursor: pointer;
   margin-top: 4px;
   color: #0f0f0f;
   gap: 10px;
@@ -532,6 +552,7 @@ button {
 }
 
 .productClose {
+  cursor: pointer;
   margin-top: 4px;
   color: #0f0f0f;
   gap: 10px;
@@ -541,6 +562,7 @@ button {
 }
 
 .paymentClose {
+  cursor: pointer;
   margin-top: 4px;
   color: #0f0f0f;
   gap: 10px;
@@ -557,6 +579,7 @@ button {
 }
 
 .modal-content {
+  overflow: hidden;
   border-radius: 0;
   /* Обнуление радиуса границ */
   background-color: #fefefe;
@@ -569,6 +592,7 @@ button {
 }
 
 .modal-content1 {
+  overflow: hidden;
   border-radius: 0;
   /* Обнуление радиуса границ */
   background-color: #fefefe00;
