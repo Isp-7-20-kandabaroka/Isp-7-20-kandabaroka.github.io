@@ -56,12 +56,7 @@
         <p>10:00 - 22:00 (ПТ-СБ 23:00)</p>
       </div>
     </div>
-    <div class="header-image-container">
-      <img class="mySlides" src="img/Frame 57.jpg" style="width:100%"
-        onclick="window.open('https://vk.com/sushiclassic74', '_self')">
-      <img class="mySlides" src="img/Frame 58.jpg" style="width:100%"
-        onclick="window.open('https://vk.com/sushiclassic74', '_self')">
-    </div>
+   
 
     <div id="cartSection" style="display:none;">
       <h2></h2>
@@ -70,29 +65,7 @@
     <div class="bottomCart" id="totalPriceSection">
       <h2 class="g1">Общая сумма: 0 ₽</h2>
     </div>
-    <script>
-      // Your JS for products, etc
-      window.onload = function () {
-        loadProducts();
-        displayProduct('combo-set');
 
-        carousel(); // move the function call inside here
-      };
-      var myIndex = 0;
-      carousel();
-
-      function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";
-        }
-        myIndex++;
-        if (myIndex > x.length) { myIndex = 1 }
-        x[myIndex - 1].style.display = "block";
-        setTimeout(carousel, 4000); // Change image every 2 seconds
-      }    
-    </script>
   </header>
 
   <section id='productSection'>
@@ -150,7 +123,6 @@
         </div>
       </div>
       <div class="input-group">
-        <img src="img/money.svg" width="40px" height="40px">
         <span id="cartTotalPrice" class="form-control">Общая сумма: 0 ₽</span>
       </div>
       <div class="ooo">
@@ -322,8 +294,8 @@
 </script>
 <script>
   // Your JS for products, etc
-  var myIndex = 0;
-  carousel();
+
+
 
   // Rest of your JS code
   var modal = document.getElementById("myModal");
@@ -350,14 +322,36 @@
 
   document.getElementById('cartModalContent').style.marginTop = "10px";
 </script>
-<script>
+<script>;
+  function checkInputs(){
+  let address = document.getElementById("deliveryAddress");
+  let payment = document.getElementById("selectPaymentBtn");
+  let checkoutBtn = document.getElementById("checkoutBtn");
 
+  address.addEventListener("input", validateInput);
+  payment.addEventListener("click", validateInput);
+
+  function validateInput(){
+    if(address.value !== "" && payment.innerHTML !== "Выбрать способ оплаты" && window.totalPrice > 500) {
+      checkoutBtn.disabled = false;
+      checkoutBtn.style.backgroundColor = "#ffffff"; //MOdify the color to match your style
+      checkoutBtn.style.cursor = "pointer";
+    }else{
+      checkoutBtn.disabled = true;
+      checkoutBtn.style.backgroundColor = "#7a8797"; //MOdify the color to match your style
+      checkoutBtn.style.cursor = "not-allowed";
+    }
+  }
+
+  // Call validateInput initially to ensure the button state is updated on page refresh
+  validateInput();
+}
 
   window.onload = function () {
     loadProducts();
     displayProduct('combo-set');
-    carousel(); // move the function call inside here
-
+    checkInputs();
+  
     // Получаем элементы модального окна
     var paymentModal = document.getElementById("paymentModal");
     var paymentBtn = document.getElementById("selectPaymentBtn");
@@ -412,6 +406,7 @@
   let checkoutBtn = document.getElementById("checkoutBtn")
 
   checkoutBtn.addEventListener("click", function () {
+    let paymentMethod = document.getElementById("selectPaymentBtn").innerText;
     let promoCode = document.getElementById("promoCode").value;
     let orderComment = document.getElementById("orderComment").value; // Получаем комментарии к заказу
     let deliveryAddress = document.getElementById("deliveryAddress").value; // Получаем адрес доставки
@@ -430,7 +425,8 @@
       orderComment: orderComment,
       deliveryAddress: deliveryAddress,
       productsInCart: productsInCart,
-      totalPrice: totalPrice
+      totalPrice: totalPrice,
+      paymentMethod: paymentMethod
     }
     tg.sendData(JSON.stringify(data));
     tg.close();
@@ -465,6 +461,7 @@
     slider.scrollLeft = scrollLeft - walk;
   });
 </script>
+
 
 
 </html>
