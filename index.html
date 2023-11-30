@@ -18,7 +18,7 @@
 <body>
   <header>
     <div class="categories">
-      <div class="category combo-set" onclick="displayProduct('combo-set')">
+      <div class="category combo-set" onclick="displayProduct('combo-set')"> 
         <h2>Комбо Сеты</h2>
       </div>
 
@@ -46,17 +46,10 @@
         <h2>Суши Классика</h2>
       </div>
     </div>
-    <div class="info-section">
-      <div class="info-block">
-        <img src="img/сlock.svg" alt="Work Time">
-        <p>8 (351) 242 00 64</p>
-      </div>
-      <div class="info-block">
-        <img src="img/clock1.svg" alt="Telephone">
-        <p>10:00 - 22:00 (ПТ-СБ 23:00)</p>
-      </div>
-    </div>
+    <img  class="img14"  src="img/Frame 58.jpg">
+ 
    
+
 
     <div id="cartSection" style="display:none;">
       <h2></h2>
@@ -75,7 +68,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <span class="close">←&nbsp</span>
-        <h2 class="ots">Корзина</h2>
+        <h2 class="">Корзина</h2>
 
       </div>
       <div id="paymentModal" class="modal">
@@ -87,13 +80,40 @@
           <button class="form-control1" onclick="setPaymentMethod('Наличными курьеру')">Наличными курьеру</button>
           <button class="form-control1" onclick="setPaymentMethod('Картой курьеру')">Картой курьеру</button>
           <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
         </div>
       </div>
       <div id="productModal" class="modal">
         <div class="modal-content1">
           <div class="modal-header1">
             <span class="productClose">←&nbsp</span>
-            <h2 class="ots">Комплекты Суши</h2>
+            <h2 class="">Комплекты Суши</h2>
           </div>
           <div id="productModalContent">
             <!-- Product content goes here -->
@@ -103,10 +123,6 @@
       </div>
       <div id="cartModalContent"></div>
       <div class="extra-details">
-        <div class="input-group">
-          <img src="img/zakaz4.svg" width="40px" height="40px">
-          <input type="text" id="deliveryAddress" class="form-control" placeholder="Введите адрес доставки">
-        </div>
         <div class="input-group">
           <img src="img/zakaz5.svg" width="40px" height="40px">
           <button type="button" id="selectPaymentBtn" class="form-control">Выбрать способ оплаты</button>
@@ -121,19 +137,63 @@
           <img src="img/zakaz2.svg" width="40px" height="40px">
           <input type="text" id="promoCode" class="form-control" placeholder="Введите промокод">
         </div>
+        <div class="input-group">
+          <img src="img/zakaz4.svg" width="40px" height="40px">
+          <textarea id="deliveryAddress" class="form-control" placeholder="Введите адрес доставки" onclick="openModal()"></textarea>
+       </div>
+        </div>
+        <div class="input-group">
+          <span id="cartTotalPrice" class="form-control">Общая сумма: 0 ₽</span>
+        </div>
+        <div class="ooo">
+          <button id="addToOrderBtn" onclick="openProductModal('sushi-set')">Добавить к заказу</button>
+          <button id="checkoutBtn">Оформить заказ</button>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+          <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+        </div>
       </div>
-      <div class="input-group">
-        <span id="cartTotalPrice" class="form-control">Общая сумма: 0 ₽</span>
-      </div>
-      <div class="ooo">
-        <button id="addToOrderBtn" onclick="openProductModal('sushi-set')">Добавить к заказу</button>
-        <button id="checkoutBtn">Оформить заказ</button>
-
-      </div>
-      <h>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h>
+      
+      
     </div>
   </div>
+  <div id="product-description-modal" class="modal-show">
+    <div class="modal-content">
+      <div class="modal-header5">
 
+        <span onclick="closeProductDescription()">Описание x</span>
+
+      </div>
+      <div class="modal-body">
+        <img id="product-description-img">
+        <div class="headddd">
+          <h2 id="product-description-header"></h2>
+          <p id="product-description-price"></p>
+        </div>
+
+        <p id="product-description-content"></p>
+        <div class="product-description-buttons">
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  <div id="myModal4" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h2>Заполните данные доставки</h2>
+    <input type="text" id="cityInput" placeholder="Город">
+    <input type="text" id="streetInput" placeholder="Улица">
+    <input type="text" id="houseInput" placeholder="Дом">
+    <input type="text" id="buildingInput" placeholder="Корп./стр.">
+    <input type="text" id="entranceInput" placeholder="Подъезд">
+    <input type="text" id="intercomInput" placeholder="Домофон">
+    <input type="text" id="apartmentInput" placeholder="Кв/офис">
+    <input type="text" id="floorInput" placeholder="Этаж">
+    <textarea id="descriptionInput" placeholder="Описание"></textarea>
+    <button onclick="submitForm()">Сохранить</button>
+  </div>
+</div>
 </body>
 <script>
 
@@ -141,10 +201,11 @@
 
 
 
-  var cart = []; // Пустая корзина в начале
+  var cart = [];
   function loadProducts() {
     products = {
-      'combo-set': [{ 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽', 'grams': '100 г' },
+      'combo-set': [{ 'img': 'img/1.jpg', 'name': 'Комбо 19', 'price': '1165 ₽', 'grams': '100 г', 'description': 'Большой чизмаки огурец, Тортильяс, Дракон калифорнийский, Филадельфия классика.Вес: 1115гр' },
+
       { 'img': 'img/2.jpg', 'name': 'Комбо 18', 'price': '1210 ₽', 'grams': '110 г' },
       { 'img': 'img/3.jpg', 'name': 'Комбо 17', 'price': '1290 ₽', 'grams': '100 г' },
       { 'img': 'img/4.jpg', 'name': 'Комбо 16', 'price': '1350 ₽', 'grams': '120 г' }],
@@ -262,6 +323,7 @@
 
     document.getElementById('totalPriceSection').innerHTML = `<h2 class="g1">ОФОРМИТЬ ЗАКАЗ: ${totalPrice} ₽</h2>`;
   }
+  
   function displayProduct(productType) {
     const section = document.getElementById('productSection');
     var innerHTML = '';
@@ -275,8 +337,9 @@
       }
     });
     for (let i = 0; i < products[productType].length; i++) {
-      innerHTML += `<div class="product">
-    <img src=${products[productType][i].img} alt=${products[productType][i].name}>
+      innerHTML += `
+  <div class="product">
+    <img src=${products[productType][i].img} alt=${products[productType][i].name} onclick="openProductDescription('${productType}', ${i})">
     <h2>${products[productType][i].name}</h2>
     <p>${products[productType][i].price} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ${products[productType][i].grams}</p>
     <div class="product-quantity">
@@ -284,11 +347,13 @@
     </div>
   </div>`;
 
+
     }
 
 
     section.innerHTML = innerHTML;
   }
+  
   window.onload = loadProducts;
 
 </script>
@@ -323,35 +388,35 @@
   document.getElementById('cartModalContent').style.marginTop = "10px";
 </script>
 <script>;
-  function checkInputs(){
-  let address = document.getElementById("deliveryAddress");
-  let payment = document.getElementById("selectPaymentBtn");
-  let checkoutBtn = document.getElementById("checkoutBtn");
+  function checkInputs() {
+    let address = document.getElementById("deliveryAddress");
+    let payment = document.getElementById("selectPaymentBtn");
+    let checkoutBtn = document.getElementById("checkoutBtn");
 
-  address.addEventListener("input", validateInput);
-  payment.addEventListener("click", validateInput);
+    address.addEventListener("input", validateInput);
+    payment.addEventListener("click", validateInput);
 
-  function validateInput(){
-    if(address.value !== "" && payment.innerHTML !== "Выбрать способ оплаты" && window.totalPrice > 500) {
-      checkoutBtn.disabled = false;
-      checkoutBtn.style.backgroundColor = "#ffffff"; //MOdify the color to match your style
-      checkoutBtn.style.cursor = "pointer";
-    }else{
-      checkoutBtn.disabled = true;
-      checkoutBtn.style.backgroundColor = "#7a8797"; //MOdify the color to match your style
-      checkoutBtn.style.cursor = "not-allowed";
+    function validateInput() {
+      if (address.value !== "" && payment.innerHTML !== "Выбрать способ оплаты" && window.totalPrice > 500) {
+        checkoutBtn.disabled = false;
+        checkoutBtn.style.backgroundColor = "#ffffff"; //MOdify the color to match your style
+        checkoutBtn.style.cursor = "pointer";
+      } else {
+        checkoutBtn.disabled = true;
+        checkoutBtn.style.backgroundColor = "#cccccc"; //MOdify the color to match your style
+        checkoutBtn.style.cursor = "not-allowed";
+      }
     }
-  }
 
-  // Call validateInput initially to ensure the button state is updated on page refresh
-  validateInput();
-}
+    // Call validateInput initially to ensure the button state is updated on page refresh
+    validateInput();
+  }
 
   window.onload = function () {
     loadProducts();
     displayProduct('combo-set');
     checkInputs();
-  
+
     // Получаем элементы модального окна
     var paymentModal = document.getElementById("paymentModal");
     var paymentBtn = document.getElementById("selectPaymentBtn");
@@ -461,7 +526,100 @@
     slider.scrollLeft = scrollLeft - walk;
   });
 </script>
+<script>
+  function openProductDescription(category, productIndex) {
+    const product = products[category][productIndex];
+    const productModal = document.getElementById('product-description-modal');
 
+    document.getElementById('product-description-header').innerText = product.name;
+    document.getElementById('product-description-content').innerText = product.description;
+    document.getElementById('product-description-price').innerText = product.price;
+    document.getElementById('product-description-img').src = product.img;
+
+    productModal.style.display = "block";
+  }
+
+</script>
+<script>
+  function closeProductDescription() {
+    document.getElementById('product-description-modal').style.display = "none";
+  }
+
+  window.onclick = function (event) {
+    if (event.target == document.getElementById('product-description-modal')) {
+      closeProductDescription();
+    }
+  }
+</script>
+<script>
+  function openModal() {
+  var modal = document.getElementById("myModal4");
+  modal.style.display = "block";
+}
+
+function closeModal() {
+  var modal = document.getElementById("myModal4");
+  modal.style.display = "none";
+}
+
+function submitForm() {
+  // Получение значений полей ввода
+  var city = document.getElementById("cityInput").value;
+  var street = document.getElementById("streetInput").value;
+  var house = document.getElementById("houseInput").value;
+  var building = document.getElementById("buildingInput").value;
+  var entrance = document.getElementById("entranceInput").value;
+  var intercom = document.getElementById("intercomInput").value;
+  var apartment = document.getElementById("apartmentInput").value;
+  var floor = document.getElementById("floorInput").value;
+  var description = document.getElementById("descriptionInput").value;
+
+  // Обработка полученных значений
+  var deliveryAddress = city + ", " + street + ", " + house;
+  if (building) {
+    deliveryAddress += ", " + building;
+  }
+  if (entrance) {
+    deliveryAddress += ", подъезд " + entrance;
+  }
+  if (intercom) {
+    deliveryAddress += ", код домофона " + intercom;
+  }
+  if (apartment) {
+    deliveryAddress += ", кв. " + apartment;
+  }
+  if (floor) {
+    deliveryAddress += ", этаж " + floor;
+  }
+  
+  // Обновление поля ввода адреса доставки
+  var deliveryAddressInput = document.getElementById("deliveryAddress");
+  deliveryAddressInput.value = deliveryAddress;
+  
+  // Создание запроса к геокодеру
+  var requestUrl = "https://geocode-maps.yandex.ru/1.x/?apikey=1ea750ee-f842-4fbf-a439-6aaa3bb83c0b&format=json&geocode=" + deliveryAddress;
+
+  // Отправка запроса
+  fetch(requestUrl)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      // Обработка полученных данных
+      var coordinates = data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ');
+      var latitude = coordinates[1];
+      var longitude = coordinates[0];
+
+      // Дальнейшая обработка данных, если нужно
+      // ...
+    })
+    .catch(function(error) {
+      console.log(error);
+      // Обработка ошибки, если нужно
+      // ...
+    });
+}
+</script>
 
 
 </html>
