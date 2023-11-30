@@ -79,11 +79,12 @@ h2 {
 }
 
 .product-details {
-  margin-top: -5px;
-  border: 1px solid #000000;
+  margin-left: 10px;
+  margin-top: -15px;
+  border-left: 1px solid black;
   display: flex;
   font-weight: 500;
-  width: 100%;
+ 
   height: 70px;
 }
 
@@ -133,7 +134,13 @@ h2 {
   font-family: 'Montserrat Alternates', sans-serif;
   /* Определяем семейство шрифтов */
 }
-
+#deliveryAddress.form-control {
+  height: 60px;
+  width: 300px;
+  padding: 10px;
+  overflow: auto;
+  white-space: pre-wrap;
+}
 .extra-details h5 {
   margin-top: 10px;
   display: flex;
@@ -189,8 +196,8 @@ h2 {
 
 #addToOrderBtn {
   cursor: pointer;
-  background-color: #FE3A4A;
-  color: #fefefe;
+  border-bottom: 1px solid black;
+  color: #000000;
   border: none;
   border-radius: 20px;
   height: 30px;
@@ -201,11 +208,13 @@ h2 {
 }
 
 .form-control1 {
-  border: none;
+  border-radius: 0px;
+  margin-top: 20px;
+  margin-left: 90px;
+  height: 40px;
+  border: 1px solid black;
   box-shadow: #0f0f0f;
-  padding: 10px;
-  border-radius: 2px;
-  width: 100%;
+  width: 50%;
   color: #0f0f0f;
   background-color: #fefefe;
 
@@ -243,7 +252,7 @@ button {
   width: 369px;
   /* Для возможности прокручивания */
   overflow-x: auto;
-  
+  position: fixed;
   /* Убираем полосу прокрутки */
   scrollbar-width: none; 
   -ms-overflow-style: none; 
@@ -265,6 +274,7 @@ button {
 }
 
 .category {
+  padding: 5px;
   min-width: max-content;
   white-space: nowrap;
   margin-top: 0px;
@@ -275,7 +285,7 @@ button {
 .category h2 {
   
   font-family: 'Montserrat Alternates', sans-serif;
-  font-weight: 900;
+  font-weight: 500;
   color: rgb(34, 34, 34);
   cursor: pointer;
   font-size: 16px;
@@ -296,12 +306,22 @@ button {
 }
 
 .category-selected {
-  padding: 5px;
-  transition: 1s;
-  background: linear-gradient(45deg, #FE3A4A, #FF512F);
-  /* Добавьте эти строки */
-  opacity: 0; /* Начальная прозрачность */
-  animation: fadeEffect 1s forwards; /* Применение анимации */
+  
+  background-image: linear-gradient(to right, rgba(254, 58, 74, 0.8), rgba(254, 58, 74, 0.4), rgba(254, 58, 74, 0.8));
+  background-size: 200% auto;
+  animation: waveAnimation 2s linear infinite;
+}
+
+@keyframes waveAnimation {
+  0% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
 }
 
 @keyframes fadeEffect {
@@ -332,22 +352,21 @@ button {
     
     background-color: #ffffff;
     /* Добавьте фон */
-    width: auto;
     /* Change here to make product width flexible */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     /* It will push the Remove button to bottom */
     margin-top: 10px;
-    margin-left: 30px;
+    margin-left: 4px;
     flex-direction: row;
     /* Changed from column to row */
     align-items: center;
     /* Add this line */
-    width: calc(44% - 25px);
+    width: 170px;
     border: none;
     /* Вместо этой строки добавьте две следующие строки */
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.411);
     /* Тень вокруг карточки */
     border-radius: 20px;
     /* Углы карточки */
@@ -358,6 +377,9 @@ button {
     /* Анимация увеличения при наведении */
   }
 }
+.product:active {
+  transform: translateY(-5px);
+}
 .product p {
   font-weight: 500;
   font-size: 1.0em;
@@ -367,7 +389,10 @@ button {
   /* Add this line to reduce space between h2 and p */
 
 }
-
+.ots{
+  margin-top: 15px;
+  font-size: 16px;
+}
 .modal .product {
   overflow: hidden;
   display: flex;
@@ -380,7 +405,9 @@ button {
 
 #productSection {
   display: block;
-  margin: 0 auto;
+  z-index: 1;
+  margin-top: -50px;
+  margin-left: 16px;
   /* For center align */
   width: 100%;
   /* Change here */
@@ -408,7 +435,7 @@ button {
 .tovartext1 {
   margin-top: -20px;
   font-size: 14px;
-  margin-left: 180px;
+  margin-left: 210px;
 }
 
 .tovartext3 {
@@ -441,7 +468,7 @@ button {
   border-radius: 0px;
   font-weight: 500;
   display: inline-block;
-  background:#fefefe;
+  background:#ffffff;
   /* Здесь задаем градиентный фон */
   color: rgb(27, 27, 27);
   text-align: center;
@@ -496,7 +523,7 @@ button {
   top: 0;
   width: 100%;
   /* Полная ширина */
-  height: 100%;
+  height: 1000px;
   /* Полная высота */
   overflow: auto;
   /* Добавьте скролл, если содержимое больше экрана */
@@ -563,7 +590,7 @@ button {
 
 .paymentClose {
   cursor: pointer;
-  margin-top: 4px;
+  margin-top: -4px;
   color: #0f0f0f;
   gap: 10px;
   font-size: 28px;
@@ -580,29 +607,138 @@ button {
 
 .modal-content {
   overflow: hidden;
+  min-height: 200px;
   border-radius: 0;
   /* Обнуление радиуса границ */
   background-color: #fefefe;
   margin: 0;
   /* Удаление авто-отступов */
 
-  border: 1px solid #888;
   width: 100%;
   /* 100% ширины */
 }
 
 .modal-content1 {
   overflow: hidden;
+  height: 1000px;
   border-radius: 0;
   /* Обнуление радиуса границ */
-  background-color: #fefefe00;
+  background-color: rgb(254, 254, 254);
   margin: 0;
   /* Удаление авто-отступов */
 
-  border: 1px solid #88888800;
   width: 100%;
-  /* 100% ширины */
 }
 .g1{
   font-weight: 500;
+}
+.modal-header5{
+  z-index: 1;
+  
+ 
+  font-size: 20px;
+ padding-top: 13px;
+ padding-left: 130px;
+  height: 40px;
+ 
+}
+#product-description-img{
+  z-index: 2;
+  margin-top: 5px;
+  margin-left: 65px;
+  width: 250px;
+  height: 250px;
+}
+#product-description-content{
+  margin-top: -27px;
+  text-transform: lowercase;
+ 
+  padding: 45px;
+  
+  
+  
+  font-size: 14px;
+  font-weight: 500;
+}
+.g2{
+  margin-top: -4px;
+  color: #ffffff;
+
+}
+#product-description-price{
+ margin-top: -15px;
+  font-size: 20px;
+
+
+  font-weight: 500;
+}
+
+
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.headddd{
+ margin-top: 10px;
+  height: 40px;
+
+  padding-left: 42px;
+  font-size: 10px;
+
+}
+#product-description-header{
+  margin-top: -1px;
+  
+}
+.modal-show {
+
+ border: 2px solid black;
+  overflow: hidden;
+  display: none;
+  /* Скрыто по умолчанию */
+  position: fixed;
+  /* Будет оставаться на месте */
+  z-index: 1;
+  /* Будет находиться поверх всего */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Полная ширина */
+ height: 800px;
+  /* Полная высота */
+  overflow: auto;
+background-color: #ffffff;
+ border: none;
+  /* Тень вокруг карточки */
+  animation: slide-in 0.6s forwards;
+  
+}
+
+
+#categoryTitle{
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 20px;
+}
+#categoryTitle1{
+  font-size: 14px;
+  font-weight: 500;
+  margin-left: 20px;
+  margin-top: -10px;
+}
+.img14{
+  width: 390px;
+}
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
 }
