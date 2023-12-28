@@ -126,7 +126,6 @@ h2 {
   /* Decrease the width */
   
 }
-
 .extra-details input {
   flex-grow: 1;
   /* Разрешаем полю ввода растягиваться, чтобы занять все свободное пространство */
@@ -275,7 +274,7 @@ button {
   padding: 0px;
   margin-top: -20px;
   background-color: #ffffff;
-  padding-left: 12px;
+  padding-left: 17px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
   align-items: flex-start;
 
@@ -415,7 +414,7 @@ font-family: 'Roboto Condensed', sans-serif;
   display: block;
   z-index: 1;
   margin-top: -15px;
-  margin-left: 10px;
+  margin-left: 15px;
   /* For center align */
   width: 100%;
   /* Change here */
@@ -523,27 +522,16 @@ font-family: 'Roboto Condensed', sans-serif;
 }
 
 .modal {
-  overflow: hidden;
-  display: none;
-  /* Скрыто по умолчанию */
-  position: fixed;
-  /* Будет оставаться на месте */
-  z-index: 1;
-  /* Будет находиться поверх всего */
+  display: none; /* Скрыть модальное окно по умолчанию */
+  position: fixed; /* Fixed position */
+  z-index: 1; /* Сидит поверх всего */
   left: 0;
   top: 0;
-  width: 100%;
-  /* Полная ширина */
-  height: 1000px;
-  /* Полная высота */
-  overflow: auto;
-  /* Добавьте скролл, если содержимое больше экрана */
-  background-color: rgb(0, 0, 0);
-  /* Полупрозрачный фон */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Полупрозрачный фон (черный с прозрачностью .4) */
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 1.15);
-  /* Тень вокруг карточки */
+  width: 100%; /* Ширина полной ширины */
+  height: 100%; /* Вся высота, покрывает всю страницу */
+  overflow: auto; /* Включить прокрутку, если требуется */
+  background-color: rgb(0,0,0); /* Цвет фона */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 .modal-header {
@@ -623,6 +611,8 @@ font-family: 'Roboto Condensed', sans-serif;
   /* Обнуление радиуса границ */
   background-color: #fefefe;
   margin: 0;
+  width: 100%; /* ширина модального окна будет 100% от своего родителя */
+  box-sizing: border-box; /* учитывать padding и border в ширине */
   /* Удаление авто-отступов */
 
   width: 100%;
@@ -771,7 +761,7 @@ textarea {
 .headup{
   text-transform: lowercase;
   height: 20px;
-  margin-left: 12px;
+  margin-left: 17px;
   text-align: left;
   margin-top: 40px;
   font-weight: 700;
@@ -780,7 +770,7 @@ textarea {
 .headup1{
   text-transform: lowercase;
   height: 1px;
-  margin-left: 12px;
+  margin-left: 17px;
   text-align: left;
   margin-top: -5px;
   font-weight: 500;
@@ -791,7 +781,7 @@ textarea {
   text-transform: lowercase;
   color: #ffffff;
   padding-left: 10px;
-  margin-left: 12px;
+  margin-left: 17px;
   border-top: 1px solid rgb(255, 255, 255);
   border-bottom: 1px solid rgb(255, 255, 255);
   padding-bottom: 10px;
@@ -799,4 +789,14 @@ textarea {
   width: 338px;
   font-weight: 500;
 }
+.product-quantity {
+  display: flex; /* Это заставит элементы располагаться в строчку */
+  align-items: center; /* Центрирование элементов по вертикали */
+  justify-content: center; /* Центрирование элементов по горизонтали */
+}
 
+
+.circle-button{
+  border-radius: 50px;
+  border: 1px solid black;
+}
