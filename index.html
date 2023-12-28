@@ -265,25 +265,28 @@
     }
 
     displayCart();
+    displayProduct(category); // update the products display
   }
 
   function removeFromCart(index) {
     cart.splice(index, 1);
     displayCart();
   }
-  function increaseQuantityInCart(index) {
-    cart[index].quantity++;
-    displayCart();
-  }
-  function decreaseQuantityInCart(index) {
-    if (cart[index].quantity > 1) {
-      cart[index].quantity--;
-    } else {
-      removeFromCart(index);
-    }
+  function increaseQuantityInCart(index, category) {
+  cart[index].quantity++;
+  displayCart();
+  displayProduct(category); 
+}
 
-    displayCart();
+function decreaseQuantityInCart(index, category) {
+  if (cart[index].quantity > 1) {
+    cart[index].quantity--;
+  } else {
+    removeFromCart(index);
   }
+  displayCart();
+  displayProduct(category); 
+}
 
   function displayCart() {
     const cartSection = document.getElementById('cartModalContent');
@@ -298,23 +301,25 @@
     }
 
     for (let i = 0; i < cart.length; i++) {
-      totalPrice += parseInt(cart[i].price.replace(" ₽", "")) * cart[i].quantity;
-      window.totalPrice = totalPrice;
-      innerHTML += `
+    const productPrice = parseInt(cart[i].price.replace(" ₽", ""));
+    const productTotalPrice = productPrice * cart[i].quantity; // Общая цена для каждого типа товара
+    totalPrice += productTotalPrice;
+    innerHTML += `
 <div class="product-details">
   <img src=${cart[i].img} alt=${cart[i].name}>
   <div>
     <div class="ed">
-    <h2 class="tovartext">${cart[i].name}</h2>
-    <p class="tovartext1">${cart[i].price}</p>
+      <h2 class="tovartext">${cart[i].name}</h2>
+      <p class="tovartext1">${productTotalPrice} ₽</p> <!-- Обновленная строка: теперь показывает итоговую цену -->
     </div>
     <div class="botb">
-    <button onclick="decreaseQuantityInCart(${i})">-</button>${cart[i].quantity} 
-    <button onclick="increaseQuantityInCart(${i})">+</button></div>
-
+      <button onclick="decreaseQuantityInCart(${i}, '${cart[i].category}')">-</button>
+      ${cart[i].quantity} 
+      <button onclick="increaseQuantityInCart(${i}, '${cart[i].category}')">+</button>
+    </div>
   </div>              
 </div>`;
-    }
+  }
 
     cartSection.innerHTML = innerHTML;
     document.getElementById('cartTotalPrice').innerText = `Общая сумма: ${totalPrice} ₽`;
@@ -352,16 +357,25 @@
     }
     
     for (let i = 0; i < products[productType].length; i++) {
-      innerHTML += `
-      <div class="product">
-        <img src=${products[productType][i].img} alt=${products[productType][i].name} onclick="openProductDescription('${productType}', ${i})">
-        <h2>${products[productType][i].name}</h2>
-        <p>${products[productType][i].price} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ${products[productType][i].grams}</p>
-        <div class="product-quantity">
-          <button class="boldMontserrat" onclick="addToCart('${productType}', ${i})">ДОБАВИТЬ +</button>
-        </div>
-      </div>`;
-    }
+    const productInCartIndex = cart.findIndex(p => p.name === products[productType][i].name && p.category === productType);
+    const isInCart = productInCartIndex !== -1;
+    
+    innerHTML += `
+    <div class="product">
+      <img src="${products[productType][i].img}" alt="${products[productType][i].name}" onclick="openProductDescription('${productType}', ${i})">
+      <h2>${products[productType][i].name}</h2>
+      <p>${products[productType][i].price} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp ${products[productType][i].grams}</p>
+      <div class="product-quantity">
+  ${
+    isInCart
+      ? `<button class="circle-button" onclick="decreaseQuantityInCart(${productInCartIndex}, '${productType}')">&#8722;</button>
+<button class="circle-button" onclick="increaseQuantityInCart(${productInCartIndex}, '${productType}')">&#43;</button>
+        ${cart[productInCartIndex].quantity}`
+      : `<button class="add-to-cart-btn boldMontserrat" data-category="${productType}" data-index="${i}">ДОБАВИТЬ +</button>`
+  }
+</div>
+    </div>`;
+  }
 
     section.innerHTML = innerHTML;
   }
@@ -400,35 +414,36 @@
   document.getElementById('cartModalContent').style.marginTop = "10px";
 </script>
 <script>;
-  function checkInputs() {
-    let address = document.getElementById("deliveryAddress");
-    let payment = document.getElementById("selectPaymentBtn");
-    let checkoutBtn = document.getElementById("checkoutBtn");
+function checkInputs() {
+  let address = document.getElementById("deliveryAddress"); // Элемент для ввода адреса
+  let payment = document.getElementById("selectPaymentBtn"); // Кнопка выбора способа оплаты
+  let checkoutBtn = document.getElementById("checkoutBtn"); // Кнопка "Оформить заказ"
 
-    address.addEventListener("input", validateInput);
-    payment.addEventListener("click", validateInput);
+  address.addEventListener("input", validateInput); // вешаем обработчик событий на изменение полей
+  payment.addEventListener("click", validateInput); // вешаем обработчик событий на клик по способу оплаты
 
-    function validateInput() {
-      if (address.value !== "" && payment.innerHTML !== "Выбрать способ оплаты" && window.totalPrice > 500) {
-        checkoutBtn.disabled = false;
-        checkoutBtn.style.backgroundColor = "#ffffff"; //MOdify the color to match your style
-        checkoutBtn.style.cursor = "pointer";
-      } else {
-        checkoutBtn.disabled = true;
-        checkoutBtn.style.backgroundColor = "#cccccc"; //MOdify the color to match your style
-        checkoutBtn.style.cursor = "not-allowed";
-      }
+  function validateInput() {
+    // Проверяем условия активации кнопки заказа
+    if (address.value !== "" && payment.innerHTML !== "Выбрать способ оплаты") {
+      checkoutBtn.disabled = false;
+      checkoutBtn.style.backgroundColor = "#ffffff"; // Пример, здесь можно вставить свой цвет
+      checkoutBtn.style.cursor = "pointer";
+    } else {
+      checkoutBtn.disabled = true;
+      checkoutBtn.style.backgroundColor = "#cccccc"; // Пример, здесь можно вставить свой цвет
+      checkoutBtn.style.cursor = "not-allowed";
     }
-
-    // Call validateInput initially to ensure the button state is updated on page refresh
-    validateInput();
   }
+
+  // Вызываем валидацию при загрузке страницы
+  validateInput();
+}
 
   window.onload = function () {
     loadProducts();
     displayProduct('combo-set');
     checkInputs();
-
+   
     // Получаем элементы модального окна
     var paymentModal = document.getElementById("paymentModal");
     var paymentBtn = document.getElementById("selectPaymentBtn");
@@ -603,7 +618,7 @@ function submitForm() {
   if (floor) {
     deliveryAddress += ", этаж " + floor;
   }
-  
+  closeModal();
   // Обновление поля ввода адреса доставки
   var deliveryAddressInput = document.getElementById("deliveryAddress");
   deliveryAddressInput.value = deliveryAddress;
@@ -632,6 +647,22 @@ function submitForm() {
     });
 }
 </script>
+<script>
+  document.getElementById('productSection').addEventListener('click', function(event) {
+  // Получите объект события при нажатии
+  const target = event.target;
 
+  // Проверьте, содержит ли элемент, на который было произведено нажатие, класс 'add-to-cart-btn'
+  if (target.classList.contains('add-to-cart-btn')) {
+    // Получите категорию товара из атрибута элемента
+    const category = target.getAttribute('data-category');
+    // Получите индекс товара из атрибута элемента
+    const index = target.getAttribute('data-index');
+    
+    // Вызовите функцию addToCart с категорией и индексом, преобразованным в число
+    addToCart(category, parseInt(index));
+  }
+});
+</script>
 
 </html>
