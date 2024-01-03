@@ -497,19 +497,22 @@ function checkInputs() {
   let tg = window.Telegram.WebApp;
   let checkoutBtn = document.getElementById("checkoutBtn")
 
-  checkoutBtn.addEventListener("click", function () {
-    let paymentMethod = document.getElementById("selectPaymentBtn").innerText;
-    let promoCode = document.getElementById("promoCode").value;
-    let orderComment = document.getElementById("orderComment").value; // Получаем комментарии к заказу
-    let deliveryAddress = document.getElementById("deliveryAddress").value; // Получаем адрес доставки
-    let totalPrice = window.totalPrice;
-    let productsInCart = cart.map(product => {
-      return {
-        name: product.name,
-        quantity: product.quantity,
-        price: product.price
-      }
-    });
+checkoutBtn.addEventListener("click", function () {
+  let paymentMethod = document.getElementById("selectPaymentBtn").innerText;
+  let promoCode = document.getElementById("promoCode").value;
+  let orderComment = document.getElementById("orderComment").value; // Получаем комментарии к заказу
+  let deliveryAddress = document.getElementById("deliveryAddress").value; // Получаем адрес доставки
+  // Рассчитываем итоговую стоимость на основе корзины
+  let totalPrice = cart.reduce((sum, item) => {
+    return sum + (parseInt(item.price.replace(" ₽", "")) * item.quantity);
+  }, 0);
+  let productsInCart = cart.map(product => {
+    return {
+      name: product.name,
+      quantity: product.quantity,
+      price: product.price.replace(" ₽", "") // Удаляем символ валюты
+    }
+  });
 
     tg.expand();
     let data = {
