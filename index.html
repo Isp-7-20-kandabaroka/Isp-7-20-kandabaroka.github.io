@@ -168,8 +168,8 @@
   <div id="myModal4" class="modal">
   <div class="modal-content">
     <div class="polka0">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <h2>Заполните адрес</h2>
+    <span class="close" onclick="closeModal()">←</span>
+    <h2 class="adresss">Заполните адрес</h2>
     </div>
     <div class="polka">
     <input type="text" id="cityInput" placeholder="Город">
@@ -189,7 +189,8 @@
     </div>
   
     <textarea id="descriptionInput" placeholder="Описание"></textarea>
-    <button onclick="submitForm()">Сохранить</button>
+    <button class="save"  onclick="submitForm()">Сохранить</button>
+    <button class="button-сode-for-pickup">Самовывоз</button>
   </div>
 </div>
 </body>
@@ -667,5 +668,81 @@ function submitForm() {
   }
 });
 </script>
+<script>
+  // Функции для обновления стилей поля ввода на основе данных
+function setInputStyle(input) {
+  if (input.value.trim() === '') {
+    input.classList.remove('active-input');
+    input.classList.add('inactive-input');
+  } else {
+    input.classList.remove('inactive-input');
+    input.classList.add('active-input');
+  }
+}
 
+// Вешаем обработчики событий на элементы при их изменении
+document.getElementById("cityInput").addEventListener('input', function() { setInputStyle(this) });
+document.getElementById("streetInput").addEventListener('input', function() { setInputStyle(this) });
+document.getElementById("houseInput").addEventListener('input', function() { setInputStyle(this) });
+document.getElementById("buildingInput").addEventListener('input', function() { setInputStyle(this) });
+document.getElementById("entranceInput").addEventListener('input', function() { setInputStyle(this) });
+document.getElementById("intercomInput").addEventListener('input', function() { setInputStyle(this) });
+document.getElementById("apartmentInput").addEventListener('input', function() { setInputStyle(this) });
+document.getElementById("floorInput").addEventListener('input', function() { setInputStyle(this) });
+document.getElementById("descriptionInput").addEventListener('input', function() { setInputStyle(this) });
+
+// ОБновлияем обработчик для кнопки способа оплаты
+document.getElementById("selectPaymentBtn").addEventListener('click', function() {
+  // Ваш код для открытия модального окна оплаты
+  // Затем проверяем если способ оплаты выбран
+  if (this.innerText !== "Выбрать способ оплаты") {
+    this.classList.remove('inactive-input');
+    this.classList.add('active-input');
+  }
+});
+
+// Вызываем функции вручную для инициализации стилей при загрузке страницы
+setInputStyle(document.getElementById("cityInput"));
+setInputStyle(document.getElementById("streetInput"));
+setInputStyle(document.getElementById("houseInput"));
+setInputStyle(document.getElementById("buildingInput"));
+setInputStyle(document.getElementById("entranceInput"));
+setInputStyle(document.getElementById("intercomInput"));
+setInputStyle(document.getElementById("apartmentInput"));
+setInputStyle(document.getElementById("floorInput"));
+setInputStyle(document.getElementById("descriptionInput"));
+
+// Обновление для поля способа оплаты
+setInputStyle(document.getElementById("selectPaymentBtn"));
+</script>
+<script>
+function showPickupAddresses() {
+  var modal = document.getElementById("myModal4"); // Получаем модальное окно адресов для самовывоза
+  var modalContent = modal.querySelector('.modal-content'); // Получаем контейнер контента
+  modalContent.innerHTML += `
+   
+    <div class="pickup-addresses">
+      <button class="ad1" onclick="selectPickupAddress('ул. Салютная, 9/2')">📍 ул. Салютная, 9/2</button>
+      <button class="ad2" onclick="selectPickupAddress('ул. Молодогвардейцев, 31а')">📍 ул. Молодогвардейцев, 31а</button>
+    </div>
+  `;
+  modal.style.display = "block"; // Открываем модальное окно
+}
+
+function selectPickupAddress(address) {
+  document.getElementById('deliveryAddress').value = address; // Записываем выбранный адрес
+  closeModal(); // Закрываем модальное окно
+}
+function closeModal() {
+  var modal = document.getElementById("myModal4");
+  modal.style.display = "none";
+}
+window.onclick = function (event) {
+  if (event.target == document.getElementById('myModal4')) {
+    closeModal();
+  }
+}
+// Добавьте вызов функций для новой кнопки Самовывоз
+document.querySelector('.button-сode-for-pickup').addEventListener('click', showPickupAddresses);
+</script>
 </html>
