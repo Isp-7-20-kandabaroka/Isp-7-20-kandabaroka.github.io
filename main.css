@@ -535,12 +535,14 @@ font-family: 'Roboto Condensed', sans-serif;
 }
 
 .modal-header {
+  background-image: linear-gradient(to right, rgba(254, 58, 74, 0.8), rgba(254, 58, 74, 0.4), rgba(254, 58, 74, 0.8));
   overflow: hidden;
+
   display: flex;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);
   /* Тень вокруг карточки */
   padding-left: 20px;
-  background: white;
+ color: #ffffff;
   width: 370px;
 
 }
@@ -570,8 +572,9 @@ font-family: 'Roboto Condensed', sans-serif;
 .close {
   cursor: pointer;
   margin-top: 4px;
-  color: #0f0f0f;
+  color: #ffffff;
   gap: 10px;
+  margin-left: 5px;
   font-size: 28px;
   font-weight: 500;
   font-size: 40px;
@@ -606,7 +609,7 @@ font-family: 'Roboto Condensed', sans-serif;
 
 .modal-content {
   overflow: hidden;
-  min-height: 200px;
+  height: 900px;
   border-radius: 0;
   /* Обнуление радиуса границ */
   background-color: #fefefe;
@@ -615,8 +618,7 @@ font-family: 'Roboto Condensed', sans-serif;
   box-sizing: border-box; /* учитывать padding и border в ширине */
   /* Удаление авто-отступов */
 
-  width: 100%;
-  /* 100% ширины */
+ 
 }
 
 .modal-content1 {
@@ -744,7 +746,9 @@ textarea {
   border: 1px solid #ddd;
 }
 .polka0{
+  color: #ffffff;
   display: flex;
+  background-image: linear-gradient(to right, rgba(254, 58, 74, 0.8), rgba(254, 58, 74, 0.4), rgba(254, 58, 74, 0.8));
 }
 .polka{
   display: flex;
@@ -755,8 +759,13 @@ textarea {
 .polka2{
   display: flex;
 }
-.polka3{
+.polka3 {
   display: flex;
+  flex-direction: column;
+}
+
+.polka3 button {
+  margin-bottom: 10px; /* Adjust as needed */
 }
 .headup{
   text-transform: lowercase;
@@ -799,4 +808,57 @@ textarea {
 .circle-button{
   border-radius: 50px;
   border: 1px solid black;
+}
+
+
+
+
+.pickup-addresses button {
+  text-align: left;
+  display: block; /* Make each button a block element */
+  width: 100%; /* Make the width of the button extend the full container width */
+ margin-top: 5px;
+  
+  
+}
+#myModal4 {
+  z-index: 1000; /* или достаточное значение, чтобы быть выше других окон */
+  /* остальные стили... */
+}
+.adresss{
+  margin-top: 20px;
+  margin-left: 10px;
+}
+.button-сode-for-pickup{
+  border: 1px solid black;
+  margin-left: 20px;
+  width: 150px;
+  height: 40px;
+  border-radius: 0px;
+}
+.sam{
+  background-image: linear-gradient(to right, rgba(254, 58, 74, 0.8), rgba(254, 58, 74, 0.4), rgba(254, 58, 74, 0.8));
+  margin-top: 10px;
+  color: #ffffff;
+  padding-top: 5px;
+  padding-left: 20px;
+}
+.save{
+  margin-left: 20px;
+  height: 40px;
+  border-radius: 0px;
+  width: 150px;
+  border: 1px solid black;
+}
+.ad1{
+  height: 50px;
+  border-radius: 0px;
+  width: 100%;
+  border: 1px solid rgb(151, 151, 151);
+}
+.ad2{
+  height: 50px;
+  border-radius: 0px;
+  width: 100%;
+  border: 1px solid rgb(151, 151, 151);
 }
